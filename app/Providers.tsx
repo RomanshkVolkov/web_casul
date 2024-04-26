@@ -9,7 +9,7 @@ interface Props {
 export default function Providers({ children }: Props) {
     return (
         <NextUIProvider>
-            <ThemeProvider attribute="class" defaultTheme="dark" themes={['light', 'dark']}>
+            <ThemeProvider defaultTheme="dark">
                 <main className="bg-background">
                     {children}
                 </main>

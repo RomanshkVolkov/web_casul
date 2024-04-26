@@ -25,10 +25,8 @@ const config: Config = {
   },
   darkMode: "class",
   plugins: [nextui({
-    prefix: "nxui-",
+    prefix: "nextui",
     addCommonColors: false,
-    defaultTheme: "dark",
-    defaultExtendTheme: "dark",
     layout: {},
     themes: {
       dark: {
