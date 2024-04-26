@@ -2,28 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+
+.left-diagonal {
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.right-diagonal {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%);
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.center-diagonal {
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 8% 100%);
+}
+
+.text-center input[type="text"] {
+  text-align: center;
+}
+
+#search_input {
+  font-weight: italic;
+  background: #fffbc5;
+  border: 1px solid #f7f7f7;
+  color: #393E46;
+}
+
+#search_input:focus {
+  background: #fff885;
 }
 
 @layer utilities {
