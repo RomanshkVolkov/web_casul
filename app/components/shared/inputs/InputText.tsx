@@ -5,10 +5,11 @@ import { Input } from '@nextui-org/react'
 interface Props {
     id?: string;
     value: string;
-    onChange: (value: string) => void;
+    // eslint-disable-next-line no-unused-vars
+    onChange: (_: string) => void;
     className?: string;
     placeholder?: string;
-    nuiCSS?: string;
+    endContend?: React.ReactNode;
 }
 
 export default function InputText({
@@ -17,7 +18,7 @@ export default function InputText({
     onChange,
     className,
     placeholder,
-    nuiCSS
+    endContend
 }: Props) {
     return (
         <Input
@@ -29,7 +30,7 @@ export default function InputText({
             placeholder={placeholder}
             labelPlacement='outside'
             variant='underlined'
-        // css={nuiCSS}
+            endContent={endContend}
         />
     );
 }
