@@ -1,19 +1,20 @@
-'use client'
+'use client';
 
-import { NextUIProvider } from "@nextui-org/react"
-import { ThemeProvider } from "next-themes"
+import { NextUIProvider } from '@nextui-org/react';
+import { ThemeProvider } from 'next-themes';
+import { useRouter } from 'next/navigation';
 
 interface Props {
-    children: React.ReactNode
+   children: React.ReactNode;
 }
 export default function Providers({ children }: Props) {
-    return (
-        <NextUIProvider>
-            <ThemeProvider defaultTheme="dark">
-                <main className="bg-background">
-                    {children}
-                </main>
-            </ThemeProvider>
-        </NextUIProvider>
-    )
+   const router = useRouter();
+
+   return (
+      <NextUIProvider navigate={router.push}>
+         <ThemeProvider defaultTheme="dark">
+            <main className="bg-background">{children}</main>
+         </ThemeProvider>
+      </NextUIProvider>
+   );
 }
