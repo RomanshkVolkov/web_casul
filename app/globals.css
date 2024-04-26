@@ -27,6 +27,12 @@
   color: #393E46;
 }
 
+#filters-button {
+  background: #fffbc5;
+  border: 1px solid #f7f7f7;
+  color: #393E46;
+}
+
 #search_input:focus {
   background: #fff885;
 }

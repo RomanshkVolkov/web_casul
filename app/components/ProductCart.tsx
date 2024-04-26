@@ -1,22 +1,31 @@
-import React from "react";
-import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Image, Tooltip } from "@nextui-org/react";
+import Link from "next/link";
 
-export default function ProductCard() {
+interface Props {
+    id: number;
+    title: string;
+    shortInfo: string;
+    image: string;
+}
+export default function ProductCard({ id, title, shortInfo, image }: Props) {
     return (
-        <Card className="py-4">
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                <p className="text-tiny uppercase font-bold">Daily Mix</p>
-                <small className="text-default-500">12 Tracks</small>
-                <h4 className="font-bold text-large">Frontend Radio</h4>
-            </CardHeader>
+        <Card className="pb-4 rounded-xl">
             <CardBody className="overflow-visible py-2">
                 <Image
                     alt="Card background"
                     className="object-cover rounded-xl"
-                    src="/images/53501.jpeg"
-                    width={270}
+                    src={image}
+                    width={1420}
                 />
             </CardBody>
+            <Link href={`/product/${id}`}>
+                <CardHeader className="pb-2 pt-2 px-4 flex-col items-start max-w-64 sm:max-w-none">
+                    <small className="text-default-500">{shortInfo}</small>
+                    <Tooltip content={title} className="max-w-64" placement="bottom" >
+                        <h4 className="font-bold text-large text-elipsis max-h-16">{title}</h4>
+                    </Tooltip>
+                </CardHeader>
+            </Link>
         </Card>
     );
 }
