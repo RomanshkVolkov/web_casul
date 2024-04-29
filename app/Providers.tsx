@@ -3,18 +3,25 @@
 import { NextUIProvider } from '@nextui-org/react';
 import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/navigation';
+import { Provider } from 'react-redux';
+import { persistor, store } from '../lib/store/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 interface Props {
-    children: React.ReactNode;
+   children: React.ReactNode;
 }
 export default function Providers({ children }: Props) {
-    const router = useRouter();
+   const router = useRouter();
 
-    return (
-        <NextUIProvider navigate={router.push}>
-            <ThemeProvider defaultTheme="dark">
-                <main className="bg-background  text-foreground">{children}</main>
-            </ThemeProvider>
-        </NextUIProvider>
-    );
+   return (
+      <NextUIProvider navigate={router.push}>
+         <ThemeProvider defaultTheme="dark">
+            <Provider store={store}>
+               <PersistGate loading={null} persistor={persistor}>
+                  <main className="bg-background  text-foreground">{children}</main>
+               </PersistGate>
+            </Provider>
+         </ThemeProvider>
+      </NextUIProvider>
+   );
 }

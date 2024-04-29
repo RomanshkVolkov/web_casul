@@ -1,21 +1,25 @@
-export default function WidgetFilters() {
-    return (
-        <div className="flex flex-wrap items-center justify-between">
-            <div className="flex items-center">
-                <span className="text-gray-600 mr-2">Filter by:</span>
-                <select className="border border-gray-300 rounded-md px-2 py-1">
-                    <option value="all">All</option>
-                    <option value="active">Active</option>
-                    <option value="completed">Completed</option>
-                </select>
-            </div>
-            <div className="flex items-center">
-                <span className="text-gray-600 mr-2">Sort by:</span>
-                <select className="border border-gray-300 rounded-md px-2 py-1">
-                    <option value="newest">Newest</option>
-                    <option value="oldest">Oldest</option>
-                </select>
-            </div>
-        </div>
-    )
+'use client';
+import Image from 'next/image';
+import CustomModal from './shared/CustomModal';
+import Filters from './shared/inputs/Filters';
+
+interface Props {
+   id?: string;
+}
+
+export default function WidgetFilters({ id }: Props) {
+   const filtersButton = <Image src="/svg/filters.svg" alt="filter" width={24} height={24} />;
+   return (
+      <CustomModal
+         id={id}
+         title="Filtros"
+         button={filtersButton}
+         size="sm"
+         className="bg-transparent"
+      >
+         <div className="flex flex-wrap items-center justify-between">
+            <Filters />
+         </div>
+      </CustomModal>
+   );
 }
