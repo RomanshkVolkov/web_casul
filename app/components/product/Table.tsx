@@ -1,35 +1,85 @@
 'use client';
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from '@nextui-org/react';
+import {
+   Table,
+   TableHeader,
+   TableColumn,
+   TableBody,
+   TableRow,
+   TableCell,
+   Pagination,
+   getKeyValue,
+} from '@nextui-org/react';
+import { useMemo, useState } from 'react';
+
+const DATA = [
+   {
+      name: 'CILINDRO MAESTRO CLUTCH FORD TRUCK F-350 V8 5.4 LTS 2005-2010 F-450 V8 6.0 LTS 2003-2007 DIESEL F-450 V8 6.4 LTS 2008-2010 DIESEL F-450 V10 6.8 LTS 2005-2010 F-250 V8 6.0 LTS 2005-2007 DIESEL',
+      key: '321-615-301D',
+   },
+   {
+      name: 'Zoey Lang',
+      key: 'Technical Lead',
+   },
+   {
+      name: 'Jane Fisher',
+      key: 'Senior Developer',
+   },
+   {
+      name: 'William Howard',
+      key: 'Community Manager',
+   },
+];
 
 const ProductTable = () => {
+   const [page, setPage] = useState(1);
+   const ROWS_PER_PAGE = 2;
+
+   const pages = Math.ceil(DATA.length / ROWS_PER_PAGE);
+
+   const items = useMemo(() => {
+      const start = (page - 1) * ROWS_PER_PAGE;
+      const end = start + ROWS_PER_PAGE;
+      return DATA.slice(start, end);
+   }, [page]);
+
    return (
-      <Table aria-label="Example static collection table" isStriped>
+      <Table
+         aria-label="Example static collection table"
+         isStriped
+         sortDescriptor={{ column: 'name', direction: 'ascending' }}
+         onSortChange={(descriptor) => console.log(descriptor)}
+         bottomContent={
+            <div className="flex w-full justify-center">
+               <Pagination
+                  isCompact
+                  showControls
+                  showShadow
+                  color="secondary"
+                  page={page}
+                  total={pages}
+                  onChange={(page) => setPage(page)}
+               />
+            </div>
+         }
+      >
          <TableHeader>
-            <TableColumn className="bg-primary text-black">NAME</TableColumn>
-            <TableColumn className="bg-primary text-black">ROLE</TableColumn>
-            <TableColumn className="bg-primary text-black">STATUS</TableColumn>
+            <TableColumn className="bg-primary text-black" key="name" allowsSorting>
+               NOMBRE
+            </TableColumn>
+            <TableColumn className="bg-primary text-black" key="key" allowsSorting>
+               CLAVE
+            </TableColumn>
          </TableHeader>
-         <TableBody>
-            <TableRow key="1">
-               <TableCell>Tony Reichert</TableCell>
-               <TableCell>CEO</TableCell>
-               <TableCell>Active</TableCell>
-            </TableRow>
-            <TableRow key="2">
-               <TableCell>Zoey Lang</TableCell>
-               <TableCell>Technical Lead</TableCell>
-               <TableCell>Paused</TableCell>
-            </TableRow>
-            <TableRow key="3">
-               <TableCell>Jane Fisher</TableCell>
-               <TableCell>Senior Developer</TableCell>
-               <TableCell>Active</TableCell>
-            </TableRow>
-            <TableRow key="4">
-               <TableCell>William Howard</TableCell>
-               <TableCell>Community Manager</TableCell>
-               <TableCell>Vacation</TableCell>
-            </TableRow>
+         <TableBody items={items}>
+            {(item) => (
+               <TableRow key={item.key}>
+                  {(columnKey) => (
+                     <TableCell>
+                        <p className="truncate max-w-[400px]">{getKeyValue(item, columnKey)}</p>
+                     </TableCell>
+                  )}
+               </TableRow>
+            )}
          </TableBody>
       </Table>
    );
