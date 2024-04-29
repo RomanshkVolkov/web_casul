@@ -7,5 +7,14 @@
   ],
   "globals": {
     "React": "writable"
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ]
   }
 }
