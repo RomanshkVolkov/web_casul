@@ -1,6 +1,6 @@
 import { Card, CardHeader, CardBody, Image, Tooltip } from '@nextui-org/react';
 import Link from 'next/link';
-import { url } from '../url/url-utils';
+import { url } from '../../url/url-utils';
 
 interface Props {
    id: number;

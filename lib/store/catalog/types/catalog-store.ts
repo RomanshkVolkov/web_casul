@@ -3,6 +3,7 @@ import CommonTypes from '@/types/common';
 
 export interface CatalogState {
    products: CatalogTypes['Product'][];
+   pendingFetch: boolean;
    loading: boolean;
    pagination: CommonTypes['Pagination'];
    filters: CatalogTypes['CatalogFilters'];
@@ -11,6 +12,7 @@ export interface CatalogState {
 
 export const initialState: CatalogState = {
    products: [],
+   pendingFetch: false,
    loading: false,
    pagination: {
       page: 1,

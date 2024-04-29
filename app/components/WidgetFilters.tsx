@@ -1,4 +1,3 @@
-'use client';
 import Image from 'next/image';
 import CustomModal from './shared/CustomModal';
 import Filters from './shared/inputs/Filters';

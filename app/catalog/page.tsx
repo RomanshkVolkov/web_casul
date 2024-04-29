@@ -1,7 +1,6 @@
 import WidgetFilters from '../components/WidgetFilters';
 import PaginationOrdering from '../components/shared/inputs/PaginationOrdering';
 import ContainerProducts from './components/ContainerProducts';
-import InputSearchResults from '../components/shared/inputs/InputSearchResults';
 
 export default function Catalog() {
    const product = {
@@ -17,7 +16,7 @@ export default function Catalog() {
    return (
       <div className="w-full px-4">
          <div className="bg-content1 w-full h-20 flex justify-between mb-6">
-            <div className="col-span-1 md:inline sm:hidden p-4">{/* <InputSearchResults /> */}</div>
+            <div className="col-span-1 md:inline sm:hidden p-4">{}</div>
             <div className="md:hidden sm:flex justify-around p-6">
                <WidgetFilters />
             </div>

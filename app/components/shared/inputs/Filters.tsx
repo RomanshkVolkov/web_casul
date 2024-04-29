@@ -9,28 +9,6 @@ async function getFilters() {
 
 export default async function Filters() {
    const filters = await getFilters();
-   const brands = [
-      { value: 1, label: 'BMW' },
-      { value: 2, label: 'Audi' },
-      { value: 3, label: 'Mercedes Benz' },
-   ];
-   const models = [
-      { value: 1, label: 'Serie 3' },
-      { value: 2, label: 'Serie 5' },
-      { value: 3, label: 'Serie 7' },
-   ];
-
-   const families = [
-      { value: 1, label: 'Sedan' },
-      { value: 2, label: 'Coupe' },
-      { value: 3, label: 'Convertible' },
-   ];
-
-   const years = [
-      { value: 1, label: '2020' },
-      { value: 2, label: '2021' },
-      { value: 3, label: '2022' },
-   ];
 
    return (
       <div className="grid w-full p-4 gap-4">

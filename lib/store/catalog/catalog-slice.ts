@@ -43,11 +43,18 @@ export const catalogSlice = createSlice({
       clearFilters: (state) => {
          state.filters = initialState.filters;
       },
+      setPendingFetch: (state, action: PayloadAction<boolean>) => {
+         state.pendingFetch = action.payload;
+      },
    },
    extraReducers: (builder) => {
       builder
          .addCase(fetchSearchProducts.pending, (state, action) => {
             state.loading = true;
+         })
+         .addCase(fetchSearchProducts.rejected, (state, action) => {
+            state.loading = false;
+            state.pendingFetch = false;
          })
          .addCase(fetchSearchProducts.fulfilled, (state, action) => {
             state.loading = false;
@@ -57,12 +64,14 @@ export const catalogSlice = createSlice({
             const pagination = serializedPagination(total, 1, currentPagination.limit);
             state.pagination = pagination;
             state.products = products || [];
-         })
-         .addCase(fetchSearchProducts.rejected, (state, action) => {
-            state.loading = false;
+            state.pendingFetch = false;
          })
          .addCase(fetchSearchProductsByFilters.pending, (state, action) => {
             state.loading = true;
+         })
+         .addCase(fetchSearchProductsByFilters.rejected, (state, action) => {
+            state.loading = false;
+            state.pendingFetch = false;
          })
          .addCase(fetchSearchProductsByFilters.fulfilled, (state, action) => {
             state.loading = false;
@@ -72,6 +81,7 @@ export const catalogSlice = createSlice({
             const pagination = serializedPagination(total, 1, currentPagination.limit);
             state.pagination = pagination;
             state.products = products || [];
+            state.pendingFetch = false;
          });
    },
 });
@@ -84,4 +94,5 @@ export const {
    setOrdering,
    setFilters,
    clearFilters,
+   setPendingFetch,
 } = catalogSlice.actions;
