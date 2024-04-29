@@ -49,7 +49,8 @@ export default class CatalogAPI extends CatalogAPIAbstract {
          {},
          20 * 60 * 1000
       );
-      if (error) return { brands: [], models: [], families: [], years: [] };
+      if (error || (content as any) === '')
+         return { brands: [], models: [], families: [], years: [] };
       return content;
    }
 }
