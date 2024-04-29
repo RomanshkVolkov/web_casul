@@ -8,6 +8,7 @@ import {
    TableCell,
    Pagination,
    getKeyValue,
+   Tooltip,
 } from '@nextui-org/react';
 import { useMemo, useState } from 'react';
 
@@ -51,9 +52,9 @@ const ProductTable = () => {
          bottomContent={
             <div className="flex w-full justify-center">
                <Pagination
+                  classNames={{ cursor: 'bg-primary text-black' }}
                   isCompact
                   showControls
-                  showShadow
                   color="secondary"
                   page={page}
                   total={pages}
@@ -75,7 +76,15 @@ const ProductTable = () => {
                <TableRow key={item.key}>
                   {(columnKey) => (
                      <TableCell>
-                        <p className="truncate max-w-[400px]">{getKeyValue(item, columnKey)}</p>
+                        {columnKey === 'name' ? (
+                           <Tooltip content={item.name} className="max-w-[300px]">
+                              <p className="truncate max-w-[400px]">
+                                 {getKeyValue(item, columnKey)}
+                              </p>
+                           </Tooltip>
+                        ) : (
+                           <p>{getKeyValue(item, columnKey)}</p>
+                        )}
                      </TableCell>
                   )}
                </TableRow>

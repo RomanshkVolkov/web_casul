@@ -17,8 +17,9 @@ export default function Product() {
                         src="/images/product-image.jpg"
                      />
                   </div>
-
-                  <Details />
+                  <div className="self-start">
+                     <Details />
+                  </div>
                </CardHeader>
             </Card>
          </div>
