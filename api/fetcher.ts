@@ -10,7 +10,7 @@ export interface FetchResponse<T> {
    error?: string;
 }
 const prefixApi = '/api/v1';
-export const urlAPI = `${process.env.URL_API || 'http://localhost:8000'}${prefixApi}`;
+export const urlAPI = `${process.env.URL_API || 'http://localhost:7001'}${prefixApi}`;
 
 const serializedLogRequest = (url: string, method: FetchMethods, body: any) => {
    console.log(`Request: ${method}: ${url}`);
@@ -23,8 +23,9 @@ export default async function fetchAPI<T, RES = FetchResponse<T>, Payload = unkn
    revalidate: number | false = false
 ): Promise<RES> {
    try {
+      const urlRequest = `${urlAPI}${url}`;
       const isDev = process.env.NODE_ENV?.includes('dev');
-      if (isDev) serializedLogRequest(url, method, body);
+      if (isDev) serializedLogRequest(urlRequest, method, body);
       const bodyParser = method === 'GET' ? null : JSON.stringify(body);
       const nextRevalidate =
          revalidate && typeof revalidate === 'number' ? { next: { revalidate } } : {};
@@ -41,7 +42,7 @@ export default async function fetchAPI<T, RES = FetchResponse<T>, Payload = unkn
          delete (fetchOptions as { body?: unknown }).body;
       }
 
-      const response = await fetch(`${urlAPI}${url}`, fetchOptions);
+      const response = await fetch(urlRequest, fetchOptions);
       const contentType = response.headers.get('Content-Type');
 
       // Mapeo de tipos de contenido a funciones de procesamiento
