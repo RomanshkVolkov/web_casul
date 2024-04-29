@@ -15,7 +15,7 @@ export default function Providers({ children }: Props) {
 
    return (
       <NextUIProvider navigate={router.push}>
-         <ThemeProvider defaultTheme="dark">
+         <ThemeProvider defaultTheme="dark" attribute="class">
             <Provider store={store}>
                <PersistGate loading={null} persistor={persistor}>
                   <main className="bg-background  text-foreground">{children}</main>
