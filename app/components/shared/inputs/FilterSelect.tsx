@@ -3,7 +3,7 @@
 import { serializedFiltersOptions } from '@/app/utils/serializers/catalog-serializer';
 import { setFilters } from '@/lib/store/catalog/catalog-slice';
 import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
-import CatalogTypes from '@/types/catalog';
+import CatalogTypes from '@/types/catalog-types';
 import { Select, SelectItem, Selection } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 

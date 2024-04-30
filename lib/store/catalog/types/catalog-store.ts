@@ -1,4 +1,4 @@
-import CatalogTypes from '@/types/catalog';
+import CatalogTypes from '@/types/catalog-types';
 import CommonTypes from '@/types/common';
 
 export interface CatalogState {

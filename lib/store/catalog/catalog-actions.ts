@@ -1,5 +1,5 @@
 import service from '@/api/services/service';
-import CatalogTypes from '@/types/catalog';
+import CatalogTypes from '@/types/catalog-types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchSearchProducts = createAsyncThunk<
@@ -7,9 +7,9 @@ export const fetchSearchProducts = createAsyncThunk<
    { search: string; showToastError?: boolean },
    { rejectValue: string }
 >('catalog/fetchSearchProducts', async ({ search }, { rejectWithValue }) => {
-   const { content, error } = await service.catalog.getProductsBySearch({ search });
+   const { data, error } = await service.catalog.getProductsBySearch({ search });
    if (error) return rejectWithValue(error);
-   return content;
+   return data;
 });
 
 export const fetchSearchProductsByFilters = createAsyncThunk<
@@ -17,7 +17,7 @@ export const fetchSearchProductsByFilters = createAsyncThunk<
    { filters: CatalogTypes['CatalogFilters']; showToastError?: boolean },
    { rejectValue: string }
 >('catalog/fetchSearchProductsByFilters', async ({ filters }, { rejectWithValue }) => {
-   const { content, error } = await service.catalog.getSearchProductsByFilters(filters);
+   const { data, error } = await service.catalog.getSearchProductsByFilters(filters);
    if (error) return rejectWithValue(error);
-   return content;
+   return data;
 });

@@ -3,7 +3,7 @@
 import { useAppSelector, useAppDispatch } from '@/lib/store/hooks';
 import { Select, SelectItem } from '@nextui-org/react';
 import { setLimitPagination, setOrdering } from '@/lib/store/catalog/catalog-slice';
-import CatalogTypes from '@/types/catalog';
+import CatalogTypes from '@/types/catalog-types';
 
 export default function PaginationOrdering() {
    const { pagination, ordering } = useAppSelector((state) => state.catalog);

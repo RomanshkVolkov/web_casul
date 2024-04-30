@@ -1,5 +1,5 @@
 import { urlAPI } from '@/api/fetcher';
-import CatalogTypes from '@/types/catalog';
+import CatalogTypes from '@/types/catalog-types';
 
 export const serializedPagination = (total: number, defaultPage: number, defaultLimit: number) => {
    const pages = Math.ceil(total / defaultLimit);

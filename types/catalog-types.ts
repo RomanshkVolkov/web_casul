@@ -4,6 +4,7 @@ interface Product {
    id: number;
    description: string;
    sku: string;
+   brand: string;
    image: string;
 }
 
@@ -26,6 +27,27 @@ interface SelectItem {
    label: string;
 }
 
+interface Applications {
+   brand: string;
+   model: string;
+   year: string;
+   version: string;
+   comments: string;
+}
+
+interface Equivalences {
+   id: number;
+   sku: string;
+   description: string;
+   brand: string;
+}
+
+interface ProductDetails {
+   product: Product;
+   applications: Applications[];
+   equivalences: Equivalences[];
+}
+
 type CatalogOrdering = 'asc' | 'desc' | 'default';
 
 export default interface CatalogTypes {
@@ -36,4 +58,7 @@ export default interface CatalogTypes {
    CatalogFilter: CatalogFilter;
    SelectItem: SelectItem;
    Filters: FilterSource;
+   Applications: Applications;
+   Equivalences: Equivalences;
+   ProductDetails: ProductDetails;
 }

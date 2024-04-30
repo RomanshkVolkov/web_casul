@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CatalogState, initialState } from './types/catalog-store';
 import { fetchSearchProducts, fetchSearchProductsByFilters } from './catalog-actions';
 import { serializedPagination } from '@/app/utils/serializers/catalog-serializer';
-import CatalogTypes from '@/types/catalog';
+import CatalogTypes from '@/types/catalog-types';
 import { clear } from 'console';
 
 export const catalogSlice = createSlice({
