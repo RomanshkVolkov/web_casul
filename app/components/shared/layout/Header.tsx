@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import SearchBar from '../../SearchBar';
 import Link from 'next/link';
+import { Tooltip } from '@nextui-org/react';
 
 export default function Header() {
    return (
@@ -16,9 +17,11 @@ export default function Header() {
          </div>
          <div className="container mx-auto md:pb-5 sm:pb-6 flex md:justify-center sm:justify-between relative">
             <div className="w-1/4 md:flex sm:hidden   justify-center">
-               <Link href="/">
-                  <Image src="/images/logo.webp" width={100} height={100} alt={'Logo'} />
-               </Link>
+               <Tooltip content="Inicio" placement="top-end">
+                  <Link href="/">
+                     <Image src="/images/logo.webp" width={100} height={100} alt={'Logo'} />
+                  </Link>
+               </Tooltip>
             </div>
             <SearchBar />
          </div>

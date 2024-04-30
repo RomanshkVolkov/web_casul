@@ -29,7 +29,7 @@ export default class CatalogAPI extends CatalogAPIAbstract {
       const data =
          content?.map((product: any) => ({
             ...product,
-            image: serializedImageUrl(product.id_producto),
+            image: serializedImageUrl(product.id),
          })) || [];
       return { data, error };
    }
@@ -62,5 +62,19 @@ export default class CatalogAPI extends CatalogAPIAbstract {
       if (error || !content || !Array.isArray(content.brands))
          return { brands: [], models: [], families: [], years: [], error };
       return content;
+   }
+
+   async getNewProducts() {
+      const { content, error } = await fetchAPI<
+         CatalogAPIResponse['GetNewProducts']['FetchResponse']
+      >(`/casul/products/news`, 'GET', {}, 20 * 60 * 1000);
+
+      if (error || !content) return { data: [], error };
+      const data =
+         content?.map((product: any) => ({
+            ...product,
+            image: serializedImageUrl(product.id),
+         })) || [];
+      return { data };
    }
 }

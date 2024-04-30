@@ -1,32 +1,38 @@
 // app/components/ThemeSwitcher.tsx
-"use client";
+'use client';
 
-import { Button } from "@nextui-org/react";
-import { useTheme } from "next-themes";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { Button, Tooltip } from '@nextui-org/react';
+import { useTheme } from 'next-themes';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { ImSun } from 'react-icons/im';
+import { BsMoonStars } from 'react-icons/bs';
 
 export function ThemeSwitcher() {
-    const [mounted, setMounted] = useState(false)
-    const { theme, setTheme } = useTheme()
+   const [mounted, setMounted] = useState(false);
+   const { theme, setTheme } = useTheme();
 
-    useEffect(() => {
-        setMounted(true)
-    }, [])
+   const tooltipTheme = theme === 'dark' ? 'tema claro' : 'tema oscuro';
 
-    if (!mounted) return null
+   useEffect(() => {
+      setMounted(true);
+   }, []);
 
-    return (
-        <Button
+   if (!mounted) return null;
+
+   return (
+      <Tooltip content={`Cambiar a ${tooltipTheme}`} placement="bottom">
+         <Button
             className="bg-transparent !px-0 !w-[24px]"
             type="button"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        >
-            <Image src={theme === 'dark' ? '/svg/theme-light.svg' : '/svg/theme-dark.svg'}
-                alt="theme"
-                width={24}
-                height={24}
-            />
-        </Button>
-    )
+         >
+            {theme === 'dark' ? (
+               <ImSun size={24} className="text-secondary" />
+            ) : (
+               <BsMoonStars size={24} />
+            )}
+         </Button>
+      </Tooltip>
+   );
 }

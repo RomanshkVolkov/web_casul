@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Skeleton } from '@nextui-org/react';
 
-export default function ProductCartSkeleton() {
+export default function ProductCardSkeleton() {
    return (
       <Card className="w-full p-4" radius="lg">
          <Skeleton className="rounded-lg">

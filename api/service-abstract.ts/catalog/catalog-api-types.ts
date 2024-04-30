@@ -9,6 +9,11 @@ interface DataResponse<T> {
 }
 
 export default interface CatalogAPIResponse {
+   GetNewProducts: {
+      Request: {};
+      FetchResponse: CatalogTypes['Product'][];
+      Response: DataResponse<CatalogTypes['Product'][] & ErrorFetch>;
+   };
    GetProductsBySearch: {
       Request: {
          search: string;

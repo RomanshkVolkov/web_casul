@@ -1,10 +1,11 @@
 'use client';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { Button, Image, Input } from '@nextui-org/react';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { Button, Image, Input, Tooltip } from '@nextui-org/react';
+import { ChangeEvent, useState } from 'react';
+import { TbSearch } from 'react-icons/tb';
+
 import { url } from '@/app/url/url-utils';
 import { toast } from 'sonner';
-import ButtonAsync from './ButtonAsync';
 import { useQueryString } from '@/lib/hooks/useQueryString';
 import { useAppDispatch } from '@/lib/store/hooks';
 import { setPendingFetch } from '@/lib/store/catalog/catalog-slice';
@@ -61,9 +62,11 @@ export default function InputSearch({ children }: Props) {
          />
 
          <div className="">
-            <Button className="bg-transparent !px-0 !w-[24px]" onClick={handleSearch}>
-               <Image src="/svg/search.svg" alt="clear" width={24} height={24} />
-            </Button>
+            <Tooltip content="Buscar" placement="bottom">
+               <Button className="bg-transparent !px-0 !w-[24px]" onClick={handleSearch}>
+                  <TbSearch size={24} className="text-secondary" />
+               </Button>
+            </Tooltip>
          </div>
       </>
    );

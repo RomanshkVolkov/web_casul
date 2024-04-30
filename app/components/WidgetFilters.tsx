@@ -1,13 +1,14 @@
 import Image from 'next/image';
 import CustomModal from './shared/CustomModal';
 import Filters from './shared/inputs/Filters';
+import { TbFilterCog } from 'react-icons/tb';
 
 interface Props {
    id?: string;
 }
 
 export default function WidgetFilters({ id }: Props) {
-   const filtersButton = <Image src="/svg/filters.svg" alt="filter" width={24} height={24} />;
+   const filtersButton = <TbFilterCog size={20} />;
    return (
       <CustomModal
          id={id}

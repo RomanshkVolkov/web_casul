@@ -1,7 +1,7 @@
 'use client';
 
-import ProductCard from '@/app/components/shared/ProductCart';
-import ProductCartSkeleton from '@/app/components/shared/ProductCartSkeleton';
+import ProductCard from '@/app/components/shared/ProductCard';
+import ProductCardSkeleton from '@/app/components/shared/ProductCardSkeleton';
 import { serializerProductOrdering } from '@/app/utils/serializers/catalog-serializer';
 import {
    fetchSearchProducts,
@@ -39,7 +39,7 @@ export default function ContainerProducts() {
          <div className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
             {loading
                ? Array.from({ length: pagination.limit }).map((_, index) => (
-                    <ProductCartSkeleton key={index} />
+                    <ProductCardSkeleton key={`product_skeleton_card_${index}`} />
                  ))
                : serializerProductOrdering(products, ordering)
                     .slice(pagination.from, pagination.to)
@@ -55,6 +55,7 @@ export default function ContainerProducts() {
          </div>
          <div className="flex justify-end mt-4">
             <Pagination
+               classNames={{ cursor: 'bg-primary text-black' }}
                onChange={(page) => handlePagination(page)}
                isCompact
                showControls

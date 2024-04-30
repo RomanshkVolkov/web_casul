@@ -22,4 +22,8 @@ export default abstract class CatalogAPIAbstract {
    async getFilters(): Promise<CatalogAPIResponse['GetFilters']['Response']> {
       throw new Error('Not implemented');
    }
+
+   async getNewProducts(): Promise<CatalogAPIResponse['GetNewProducts']['Response']> {
+      throw new Error('Not implemented');
+   }
 }

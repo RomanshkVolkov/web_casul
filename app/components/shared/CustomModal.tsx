@@ -8,6 +8,7 @@ import {
    ModalFooter,
    Button,
    useDisclosure,
+   Tooltip,
 } from '@nextui-org/react';
 import React from 'react';
 
@@ -17,6 +18,7 @@ interface Props {
    size: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
    children: React.ReactNode;
    button: React.ReactNode;
+   toolTipButton?: string;
    className?: string;
 }
 export default function CustomModal({ id, title, size, children, button, className }: Props) {
@@ -25,9 +27,11 @@ export default function CustomModal({ id, title, size, children, button, classNa
    return (
       <>
          <div id={id} className={className}>
-            <Button id={id} onPress={onOpen}>
-               {button}
-            </Button>
+            <Tooltip content={title} placement="bottom">
+               <Button id={id} onPress={onOpen}>
+                  {button}
+               </Button>
+            </Tooltip>
          </div>
          <Modal size={size} isOpen={isOpen} onClose={onClose}>
             <ModalContent>
