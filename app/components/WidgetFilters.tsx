@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import CustomModal from './shared/CustomModal';
 import Filters from './shared/inputs/Filters';
 import { TbFilterCog } from 'react-icons/tb';
@@ -14,9 +13,9 @@ export default function WidgetFilters({ id }: Props) {
          id={id}
          title="Filtros"
          button={filtersButton}
-         toolTipButton="Filtros"
          size="sm"
          className="bg-transparent"
+         buttonClassName="bg-transparent"
       >
          <div className="flex flex-wrap items-center justify-between">
             <Filters />

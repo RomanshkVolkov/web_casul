@@ -7,16 +7,17 @@ interface Props {
    id: number;
    title: string;
    shortInfo: string;
+   brand: string;
    image: string;
 }
-export default function ProductCard({ id, title, shortInfo, image }: Props) {
+export default function ProductCard({ id, title, brand, shortInfo, image }: Props) {
    return (
       <Card className="rounded-xl">
          <CardBody className="overflow-visible py-2">
             <Image
                as={NextImage}
                alt={`product_image_${title}`}
-               className="md:min-h-[227.133px] md:h-[227.133px] sm:min-h-[142.08px] sm:h-[220px] object-fill"
+               className="md:h-[227.133px] sm:h-[220px] xs:h-[220px] object-fill"
                classNames={{
                   wrapper: 'bg-cover bg-no-repeat bg-center bg-white',
                }}
@@ -31,6 +32,7 @@ export default function ProductCard({ id, title, shortInfo, image }: Props) {
          <Link href={url.product(id)}>
             <CardHeader className="p-4 flex-col items-start max-w-64 sm:max-w-none">
                <small className="text-default-500">{shortInfo}</small>
+               <small className="text-default">{brand}</small>
                <Tooltip content={title} className="max-w-64" placement="bottom">
                   <h4 className="font-bold text-large overflow-hidden max-h-14">{title}</h4>
                </Tooltip>

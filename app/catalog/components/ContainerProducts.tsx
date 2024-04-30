@@ -49,6 +49,7 @@ export default function ContainerProducts() {
                           id={product.id}
                           title={product.description}
                           shortInfo={product.sku}
+                          brand={product.brand}
                           image={product.image}
                        />
                     ))}

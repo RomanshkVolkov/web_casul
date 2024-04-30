@@ -16,7 +16,7 @@ export function ProductsCarousel({ title, products }: Props) {
    return (
       <div className="w-full flex flex-col items-center justify-center">
          <div className="p-5">
-            <h1 className="text-3xl font-bold">{title}</h1>
+            <h1 className="sm:text-3xl xs:text-lg font-bold">{title}</h1>
          </div>
 
          <div className="w-full">
@@ -39,6 +39,7 @@ export function ProductsCarousel({ title, products }: Props) {
                         id={product.id}
                         title={product.description}
                         shortInfo={product.sku}
+                        brand={product.brand}
                         image={product.image}
                      />
                   </SwiperSlide>
