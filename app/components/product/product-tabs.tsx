@@ -1,12 +1,19 @@
 'use client';
-import { Tabs, Tab, Card } from '@nextui-org/react';
+import { Tabs, Tab } from '@nextui-org/react';
 import { FaBalanceScale } from 'react-icons/fa';
 import { FaCarBurst } from 'react-icons/fa6';
 import ProductTable from './table';
 
 const ProductTabs = () => {
    return (
-      <Tabs aria-label="Opciones" fullWidth variant="light">
+      <Tabs
+         classNames={{
+            tabList: 'p-0',
+         }}
+         aria-label="Opciones"
+         variant="light"
+         fullWidth
+      >
          <Tab
             key="applications"
             title={
@@ -16,9 +23,7 @@ const ProductTabs = () => {
                </div>
             }
          >
-            <Card>
-               <ProductTable />
-            </Card>
+            <ProductTable />
          </Tab>
          <Tab
             key="equivalences"
@@ -29,9 +34,7 @@ const ProductTabs = () => {
                </div>
             }
          >
-            <Card>
-               <ProductTable />
-            </Card>
+            <ProductTable />
          </Tab>
       </Tabs>
    );

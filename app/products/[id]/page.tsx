@@ -1,7 +1,7 @@
+import { Suspense } from 'react';
 import Image from 'next/image';
 import { Card, CardHeader } from '@nextui-org/react';
 import Details from '@/app/components/product/details';
-import { Suspense } from 'react';
 import ProductSkeleton from '@/app/components/product/skeleton';
 
 export default function Product() {

@@ -39,7 +39,7 @@ const ProductTable = () => {
       direction: 'ascending',
    });
 
-   const ROWS_PER_PAGE = 10;
+   const ROWS_PER_PAGE = 5;
 
    const pages = Math.ceil(DATA.length / ROWS_PER_PAGE);
 
@@ -82,6 +82,7 @@ const ProductTable = () => {
                />
             </div>
          }
+         //removeWrapper
       >
          <TableHeader>
             <TableColumn className="bg-primary text-black" key="name" allowsSorting>
