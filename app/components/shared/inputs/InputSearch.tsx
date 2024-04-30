@@ -53,7 +53,7 @@ export default function InputSearch({ children }: Props) {
       <>
          <Input
             id="search_input"
-            className="w-[620px] md:inline sm:hidden  center-diagonal text-center focus:outline-none"
+            className="w-[620px] center-diagonal text-center focus:outline-none"
             value={search}
             onChange={(e) => handleChange(e)}
             placeholder="¿Qué estás buscando?"
@@ -61,7 +61,7 @@ export default function InputSearch({ children }: Props) {
             onKeyDown={onkeydownForSearch}
          />
 
-         <div className="">
+         <div>
             <Tooltip content="Buscar" placement="bottom">
                <Button className="bg-transparent !px-0 !w-[24px]" onClick={handleSearch}>
                   <TbSearch size={24} className="text-secondary" />
