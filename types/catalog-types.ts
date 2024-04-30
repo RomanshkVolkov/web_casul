@@ -43,7 +43,7 @@ interface Equivalences {
 }
 
 interface ProductDetails {
-   product: Product;
+   product: Product | null;
    applications: Applications[];
    equivalences: Equivalences[];
 }

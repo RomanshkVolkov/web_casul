@@ -4,7 +4,7 @@ import { FaBalanceScale } from 'react-icons/fa';
 import { FaCarBurst } from 'react-icons/fa6';
 import ProductTable from './table';
 
-const ProductTabs = () => {
+export default function ProductTabs() {
    return (
       <Tabs
          classNames={{
@@ -38,6 +38,4 @@ const ProductTabs = () => {
          </Tab>
       </Tabs>
    );
-};
-
-export default ProductTabs;
+}

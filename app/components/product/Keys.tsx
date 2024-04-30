@@ -2,7 +2,7 @@
 import { Chip } from '@nextui-org/react';
 import { useTheme } from 'next-themes';
 
-const Keys = ({ keys }: { keys: string[] }) => {
+export default function Keys({ keys }: { keys: string[] }) {
    const { theme } = useTheme();
    return (
       <>
@@ -18,6 +18,4 @@ const Keys = ({ keys }: { keys: string[] }) => {
          ))}
       </>
    );
-};
-
-export default Keys;
+}

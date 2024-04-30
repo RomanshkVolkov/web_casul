@@ -4,7 +4,7 @@ import { Card, CardHeader } from '@nextui-org/react';
 import Details from '@/app/components/product/details';
 import ProductSkeleton from '@/app/components/product/skeleton';
 
-export default function Product() {
+export default function Product({ params: { id } }: { params: { id: string } }) {
    return (
       <div className="flex py-12 px-28 bg-background">
          <div className="container">
@@ -21,7 +21,7 @@ export default function Product() {
                         />
                      </div>
                      <div className="self-start">
-                        <Details />
+                        <Details productId={id} />
                      </div>
                   </Suspense>
                </CardHeader>

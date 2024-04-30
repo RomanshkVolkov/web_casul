@@ -57,7 +57,7 @@ export const serializedFiltersOptions = (
       },
    };
    try {
-      return (typeSerializer as Record<string, (options: any) => any>)[filterName](options);
+      return (typeSerializer as Record<string, (_options: any) => any>)[filterName](options);
    } catch (error) {
       return [];
    }

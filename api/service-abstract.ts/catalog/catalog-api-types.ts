@@ -1,4 +1,3 @@
-import { FetchResponse } from '@/api/fetcher';
 import CatalogTypes from '@/types/catalog-types';
 
 interface ErrorFetch {

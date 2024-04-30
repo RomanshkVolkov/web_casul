@@ -32,7 +32,7 @@ const DATA = [
    },
 ];
 
-const ProductTable = () => {
+export default function ProductTable() {
    const [page, setPage] = useState(1);
    const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
       column: 'name',
@@ -113,6 +113,4 @@ const ProductTable = () => {
          </TableBody>
       </Table>
    );
-};
-
-export default ProductTable;
+}

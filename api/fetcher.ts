@@ -1,5 +1,3 @@
-import { relative } from 'path';
-
 type FetchMethods = 'GET' | 'POST' | 'PATCH' | 'DELETE' | null;
 export interface FetchResponse<T> {
    ok: boolean;

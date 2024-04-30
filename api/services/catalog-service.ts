@@ -1,4 +1,3 @@
-import CatalogTypes from '@/types/catalog-types';
 import fetchAPI from '../fetcher';
 import CatalogAPIAbstract from '../service-abstract.ts/catalog/catalog-abstract';
 import CatalogAPIResponse from '../service-abstract.ts/catalog/catalog-api-types';
@@ -40,14 +39,17 @@ export default class CatalogAPI extends CatalogAPIAbstract {
       const { content, error } = await fetchAPI<
          CatalogAPIResponse['GetProductById']['FetchResponse']
       >(`/casul/products/${id}`);
-      if (error || !content)
+      if (error || !content || !content.product)
          return {
-            product: {} as CatalogTypes['Product'],
+            product: null,
             applications: [],
             equivalences: [],
             error,
          };
-      return content;
+
+      const { product, ...rest } = content;
+      product.image = serializedImageUrl(product.id);
+      return { product, ...rest };
    }
 
    async getFilters() {
