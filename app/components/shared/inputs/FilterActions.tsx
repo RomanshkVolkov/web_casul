@@ -39,7 +39,7 @@ export default function FilterActions() {
    };
 
    return (
-      <div className="flex justify-around mt-4">
+      <div className="flex flex-col gap-4 mt-2">
          <ButtonAsync asyncAction={handleClear}>
             <span>Limpiar</span>
          </ButtonAsync>

@@ -11,7 +11,7 @@ export default async function Filters() {
    const filters = await getFilters();
 
    return (
-      <div className="grid w-full p-4 gap-4">
+      <div className="grid w-full p-1 gap-4">
          <FilterSelect
             id="brand-filter"
             name="brand"

@@ -14,6 +14,7 @@ export default function WidgetFilters({ id }: Props) {
          id={id}
          title="Filtros"
          button={filtersButton}
+         toolTipButton="Filtros"
          size="sm"
          className="bg-transparent"
       >
