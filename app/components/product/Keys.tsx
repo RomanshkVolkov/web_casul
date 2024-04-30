@@ -1,3 +1,4 @@
+'use client';
 import { Chip } from '@nextui-org/react';
 import { useTheme } from 'next-themes';
 

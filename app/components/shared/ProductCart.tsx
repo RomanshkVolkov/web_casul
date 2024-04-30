@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import { Card, CardHeader, CardBody, Image, Tooltip } from '@nextui-org/react';
 import Link from 'next/link';
 import { url } from '../../url/url-utils';
@@ -13,12 +14,17 @@ export default function ProductCard({ id, title, shortInfo, image }: Props) {
       <Card className="rounded-xl">
          <CardBody className="overflow-visible py-2">
             <Image
+               as={NextImage}
                alt={`product_image_${title}`}
                className="md:min-h-[227.133px] md:h-[227.133px] sm:min-h-[142.08px] sm:h-[142.08px] object-fill"
+               classNames={{
+                  wrapper: 'bg-cover bg-no-repeat bg-center bg-white',
+               }}
                radius="lg"
                src={image}
                width={1420}
-               fallbackSrc="/next.svg"
+               height={500}
+               fallbackSrc="/svg/image-not-found.svg"
                loading="lazy"
             />
          </CardBody>
