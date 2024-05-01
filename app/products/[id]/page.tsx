@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Card, CardHeader } from '@nextui-org/react';
 import ProductSkeleton from '@/app/components/product/skeleton';
-import Details from '@/app/components/product/details';
+import Details from '@/app/components/product/Details';
 
 export default function Product({ params: { id } }: { params: { id: string } }) {
   return (
