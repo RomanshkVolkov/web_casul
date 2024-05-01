@@ -1,9 +1,11 @@
 import { Divider } from '@nextui-org/react';
 import { notFound } from 'next/navigation';
-import service from '@/api/services/service';
+import Service from '@/api/services/service';
 import Image from 'next/image';
 import ProductTabs from './product-tabs';
 import Keys from './Keys';
+
+const service = new Service();
 
 export default async function Details({ productId }: { productId: string }) {
   const { product, applications, equivalences } = await service.catalog.getProductById({

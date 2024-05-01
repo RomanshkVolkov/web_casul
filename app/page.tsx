@@ -1,9 +1,10 @@
 // import WidgetFilters from "./components/WidgetFilters";
 
-import service from '@/api/services/service';
+import Service from '@/api/services/service';
 import { ProductsCarousel } from './components/ProductsCarousel';
 
 async function getNewProducts() {
+  const service = new Service();
   const { data } = await service.catalog.getNewProducts();
   return data;
 }

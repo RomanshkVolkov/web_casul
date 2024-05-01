@@ -1,15 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     env: {
-        URL_API: process.env.NEXT_PUBLIC_URL_API,
+        URL_API: process.env.URL_API,
     },
-    domains: ['apiexpresswebbeta.azurewebsites.net', 'localhost'],
     images: {
         remotePatterns: [
             {
                 protocol: 'https',
                 hostname: 'apiexpresswebbeta.azurewebsites.net',
-                port: '443'
+                port: '',
+                pathname: '/api/v1/storage/blobs/**'
             },
             {
                 protocol: 'http',

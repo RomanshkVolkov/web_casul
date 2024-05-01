@@ -1,11 +1,21 @@
-import fetchAPI from '../fetcher';
+import API from '../fetcher';
 import CatalogAPIAbstract from '../service-abstract.ts/catalog/catalog-abstract';
 import CatalogAPIResponse from '../service-abstract.ts/catalog/catalog-api-types';
 import { serializedImageUrl } from '@/app/utils/serializers/catalog-serializer';
 
 export default class CatalogAPI extends CatalogAPIAbstract {
+  private readonly urlApiBase: string;
+  private readonly api: API;
+
+  constructor(urlApiBase: string) {
+    super();
+    this.urlApiBase = urlApiBase;
+    console.log('CatalogAPI -> constructor -> this.urlApiBase', this.urlApiBase);
+    this.api = new API(this.urlApiBase);
+  }
+
   async getProductsBySearch(req: CatalogAPIResponse['GetProductsBySearch']['Request']) {
-    const { content, error } = await fetchAPI<
+    const { content, error } = await this.api.fetch<
       CatalogAPIResponse['GetProductsBySearch']['FetchResponse']
     >(`/casul/users/0/products?query=${req.search}`);
     if (error || !content) return { data: [], error };
@@ -15,28 +25,28 @@ export default class CatalogAPI extends CatalogAPIAbstract {
         sku: product.clave,
         description: product.descripcion,
         brand: product.marca,
-        image: serializedImageUrl(product.id_producto),
+        image: serializedImageUrl(product.id_producto, this.urlApiBase),
       })) || [];
     return { data };
   }
 
   async getSearchProductsByFilters(req: CatalogAPIResponse['GetProductsByFilters']['Request']) {
     const { brand, model, family, year } = req;
-    const { content, error } = await fetchAPI<
+    const { content, error } = await this.api.fetch<
       CatalogAPIResponse['GetProductsByFilters']['FetchResponse']
     >(`/casul/products/filters?brand=${brand}&model=${model}&family=${family}&year=${year}`);
     if (error || !content) return { data: [], error };
     const data =
       content?.map((product: any) => ({
         ...product,
-        image: serializedImageUrl(product.id),
+        image: serializedImageUrl(product.id, this.urlApiBase),
       })) || [];
     return { data, error };
   }
 
   async getProductById(req: CatalogAPIResponse['GetProductById']['Request']) {
     const { id } = req;
-    const { content, error } = await fetchAPI<
+    const { content, error } = await this.api.fetch<
       CatalogAPIResponse['GetProductById']['FetchResponse']
     >(`/casul/products/${id}`);
     if (
@@ -53,25 +63,22 @@ export default class CatalogAPI extends CatalogAPIAbstract {
       };
 
     const { product, equivalences: rawEquivalences, ...rest } = content;
-    product.image = serializedImageUrl(product.id);
+    product.image = serializedImageUrl(product.id, this.urlApiBase);
     const equivalences = rawEquivalences.filter((equivalence: any) => equivalence.id !== 0);
     return { product, equivalences, ...rest };
   }
 
   async getFilters() {
-    const { content, error } = await fetchAPI<CatalogAPIResponse['GetFilters']['FetchResponse']>(
-      `/casul/filters`,
-      'GET',
-      {},
-      20 * 60 * 1000
-    );
+    const { content, error } = await this.api.fetch<
+      CatalogAPIResponse['GetFilters']['FetchResponse']
+    >(`/casul/filters`, 'GET', {}, 20 * 60 * 1000);
     if (error || !content || !Array.isArray(content.brands))
       return { brands: [], models: [], families: [], years: [], error };
     return content;
   }
 
   async getNewProducts() {
-    const { content, error } = await fetchAPI<
+    const { content, error } = await this.api.fetch<
       CatalogAPIResponse['GetNewProducts']['FetchResponse']
     >(`/casul/products/news`, 'GET', {}, 20 * 60 * 1000);
 
@@ -79,7 +86,7 @@ export default class CatalogAPI extends CatalogAPIAbstract {
     const data =
       content?.map((product: any) => ({
         ...product,
-        image: serializedImageUrl(product.id),
+        image: serializedImageUrl(product.id, this.urlApiBase),
       })) || [];
     return { data };
   }
