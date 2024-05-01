@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    env: {
+        URL_API: process.env.NEXT_PUBLIC_URL_API,
+    },
     images: {
         remotePatterns: [
             {
