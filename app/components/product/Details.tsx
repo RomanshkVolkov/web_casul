@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import service from '@/api/services/service';
 import Image from 'next/image';
 import ProductTabs from './product-tabs';
-import Keys from './keys';
+import Keys from './Keys';
 
 export default async function Details({ productId }: { productId: string }) {
   const { product, applications, equivalences } = await service.catalog.getProductById({
