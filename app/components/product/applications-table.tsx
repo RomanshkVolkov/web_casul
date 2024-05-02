@@ -97,7 +97,11 @@ export default function ApplicationsTable({
       removeWrapper
     >
       <TableHeader columns={columns}>
-        {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
+        {(column) => (
+          <TableColumn key={column.key} allowsSorting>
+            {column.label}
+          </TableColumn>
+        )}
       </TableHeader>
       <TableBody items={items} emptyContent={'No se encontraron aplicaciones'}>
         {(item) => (

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { Suspense } from 'react';
 import { Card, CardHeader } from '@nextui-org/react';
 import ProductSkeleton from '@/app/components/product/skeleton';

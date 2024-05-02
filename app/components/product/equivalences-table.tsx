@@ -46,8 +46,8 @@ export default function EquivalencesTable({
 
   const sortedItems = useMemo(() => {
     return [...equivalences].sort((a, b) => {
-      const keyA = getKeyValue(a, sortDescriptor.column || 'brand');
-      const keyB = getKeyValue(b, sortDescriptor.column || 'brand');
+      const keyA = getKeyValue(a, sortDescriptor.column || 'sku');
+      const keyB = getKeyValue(b, sortDescriptor.column || 'sku');
       if (keyA < keyB) {
         return sortDescriptor.direction === 'ascending' ? -1 : 1;
       }
@@ -90,7 +90,11 @@ export default function EquivalencesTable({
       removeWrapper
     >
       <TableHeader columns={columns}>
-        {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
+        {(column) => (
+          <TableColumn key={column.key} allowsSorting>
+            {column.label}
+          </TableColumn>
+        )}
       </TableHeader>
       <TableBody items={items} emptyContent={'No se encontraron equivalencias'}>
         {(item) => (

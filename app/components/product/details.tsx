@@ -21,7 +21,7 @@ export default async function Details({ productId }: { productId: string }) {
           alt="nextui logo"
           width={500}
           height={500}
-          src={product.image}
+          src={`https://imagenesbeta.blob.core.windows.net/imagenes/${productId}.jpg`}
         />
       </div>
       <div className="self-start flex-1 xs:w-full">
