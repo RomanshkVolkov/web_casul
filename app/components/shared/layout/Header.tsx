@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import SearchBar from '../../SearchBar';
 import Link from 'next/link';
-import { Tooltip } from '@nextui-org/react';
 
 export default function Header() {
   return (
