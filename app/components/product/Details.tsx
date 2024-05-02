@@ -23,7 +23,7 @@ export default async function Details({ productId }: { productId: string }) {
           src={product.image}
         />
       </div>
-      <div className="self-start flex-1">
+      <div className="self-start flex-1 xs:w-full">
         <Keys keys={product.sku.split(',')} />
         <h1 className="text-xl mb-2">{product.description}</h1>
         <h2 className="text-base mb-2">{product.brand}</h2>
