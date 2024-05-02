@@ -1,7 +1,7 @@
 import { ThemeSwitcher } from './ThemeSwitcher';
-import WidgetFilters from './WidgetFilters';
-import InputSearch from './shared/inputs/InputSearch';
-import ButtonCatalog from './shared/inputs/ButtonCatalog';
+import WidgetFilters from '../WidgetFilters';
+import InputSearch from '../shared/inputs/InputSearch';
+import ButtonCatalog from '../shared/inputs/ButtonCatalog';
 
 export default function SearchBar() {
   const startContent = <ButtonCatalog />;

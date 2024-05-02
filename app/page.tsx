@@ -9,7 +9,7 @@ export default async function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-between md:p-24 sm:p-6 xs:p-4 bg-background">
       <div className="md:container xs:w-3/4 flex justify center">
-        <ProductsCarousel title="Productos nuevos" products={[] || data} />
+        <ProductsCarousel title="Productos nuevos" products={data} />
       </div>
     </div>
   );
