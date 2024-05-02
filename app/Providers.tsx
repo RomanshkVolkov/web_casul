@@ -6,22 +6,23 @@ import { useRouter } from 'next/navigation';
 import { Provider } from 'react-redux';
 import { persistor, store } from '../lib/store/store';
 import { PersistGate } from 'redux-persist/integration/react';
+import LoadingCircularProgress from './components/shared/LoadingCircularProgress';
 
 interface Props {
-   children: React.ReactNode;
+  children: React.ReactNode;
 }
 export default function Providers({ children }: Props) {
-   const router = useRouter();
+  const router = useRouter();
 
-   return (
-      <NextUIProvider navigate={router.push}>
-         <ThemeProvider defaultTheme="dark" attribute="class">
-            <Provider store={store}>
-               <PersistGate loading={null} persistor={persistor}>
-                  <main className="bg-background  text-foreground">{children}</main>
-               </PersistGate>
-            </Provider>
-         </ThemeProvider>
-      </NextUIProvider>
-   );
+  return (
+    <NextUIProvider navigate={router.push}>
+      <ThemeProvider defaultTheme="dark" attribute="class">
+        <Provider store={store}>
+          <PersistGate loading={<LoadingCircularProgress />} persistor={persistor}>
+            <main className="bg-background  text-foreground">{children}</main>
+          </PersistGate>
+        </Provider>
+      </ThemeProvider>
+    </NextUIProvider>
+  );
 }
