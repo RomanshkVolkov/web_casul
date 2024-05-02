@@ -2,11 +2,14 @@
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import ProductCard from './shared/ProductCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { GrCatalog } from 'react-icons/gr';
+
+import ProductCard from './shared/ProductCard';
 import { A11y, Navigation, Pagination } from 'swiper/modules';
 import SlideNavButtons from './shared/inputs/SlideNavButtons';
 import CatalogTypes from '@/types/catalog-types';
+import { Link } from '@nextui-org/react';
 
 interface Props {
   title: string;
@@ -20,32 +23,45 @@ export function ProductsCarousel({ title, products }: Props) {
       </div>
 
       <div className="w-full">
-        <Swiper
-          modules={[Navigation, Pagination, A11y]}
-          slidesPerView={1}
-          spaceBetween={15}
-          breakpoints={{
-            480: { slidesPerView: 1 },
-            740: { slidesPerView: 3 },
-            1275: { slidesPerView: 4 },
-          }}
-        >
-          {products.map((product) => (
-            <SwiperSlide
-              key={product.id}
-              className="bg-red-200 !flex justify-center items-center rounded-xl"
-            >
-              <ProductCard
-                id={product.id}
-                title={product.description}
-                shortInfo={product.sku}
-                brand={product.brand}
-                image={product.image}
-              />
-            </SwiperSlide>
-          ))}
-          <SlideNavButtons />
-        </Swiper>
+        {products.length === 0 ? (
+          <div className="flex justify-center flex-col items-center gap-4">
+            <GrCatalog size={100} />
+            <h2 className="text-center text-xl font-semibold">
+              No hay productos agregados recientemente
+            </h2>
+            <p>Visita nuestro catálogo</p>
+            <Link href="/catalog" className="mt-4 text-black transition-colors 0">
+              <a className="bg-black text-white p-2 rounded-md">Explorar catálogo</a>
+            </Link>
+          </div>
+        ) : (
+          <Swiper
+            modules={[Navigation, Pagination, A11y]}
+            slidesPerView={1}
+            spaceBetween={15}
+            breakpoints={{
+              480: { slidesPerView: 1 },
+              740: { slidesPerView: 3 },
+              1275: { slidesPerView: 4 },
+            }}
+          >
+            {products.map((product) => (
+              <SwiperSlide
+                key={product.id}
+                className="bg-red-200 !flex justify-center items-center rounded-xl"
+              >
+                <ProductCard
+                  id={product.id}
+                  title={product.description}
+                  shortInfo={product.sku}
+                  brand={product.brand}
+                  image={product.image}
+                />
+              </SwiperSlide>
+            ))}
+            <SlideNavButtons />
+          </Swiper>
+        )}
       </div>
     </div>
   );

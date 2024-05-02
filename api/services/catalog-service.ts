@@ -82,7 +82,7 @@ export default class CatalogAPI extends CatalogAPIAbstract {
       CatalogAPIResponse['GetNewProducts']['FetchResponse']
     >(`/casul/products/news`, 'GET', {}, 20 * 60 * 1000);
 
-    if (error || !content) return { data: [], error };
+    if (error || !content || !Array.isArray(content)) return { data: [], error };
     const data =
       content?.map((product: any) => ({
         ...product,

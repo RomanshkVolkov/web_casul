@@ -27,10 +27,10 @@
   color: #393E46;
 }
 
-#filters-button {
+#search-nav--button {
   background: #fffbc5;
-  border: 1px solid #f7f7f7;
   color: #393E46;
+  border-radius: 0;
 }
 
 #search_input:focus {

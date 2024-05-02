@@ -11,10 +11,11 @@ import { useAppDispatch } from '@/lib/store/hooks';
 import { setPendingFetch } from '@/lib/store/catalog/catalog-slice';
 
 interface Props {
-  children: React.ReactNode;
+  startContent?: React.ReactNode;
+  endContent?: React.ReactNode;
 }
 
-export default function InputSearch({ children }: Props) {
+export default function InputSearch({ startContent, endContent }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -26,6 +27,8 @@ export default function InputSearch({ children }: Props) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
+
+  const isCatalogSite = pathname === url.catalog;
 
   const handleSearch = async () => {
     // Primero, validar la longitud de la búsqueda
@@ -57,7 +60,8 @@ export default function InputSearch({ children }: Props) {
         value={search}
         onChange={(e) => handleChange(e)}
         placeholder="¿Qué estás buscando?"
-        endContent={children}
+        startContent={!isCatalogSite && startContent}
+        endContent={!isCatalogSite && endContent}
         onKeyDown={onkeydownForSearch}
       />
 

@@ -5,9 +5,8 @@ import Image from 'next/image';
 import ProductTabs from './product-tabs';
 import Keys from './Keys';
 
-const service = new Service();
-
 export default async function Details({ productId }: { productId: string }) {
+  const service = new Service();
   const { product, applications, equivalences } = await service.catalog.getProductById({
     id: +productId,
   });
