@@ -5,11 +5,20 @@ import { useEffect, useState } from 'react';
 import { BASE_IMAGE_URL } from '@/app/utils/consts';
 import ImageThumbnail from './image-thumbnail';
 
+const SCALE_FACTOR = 3;
+
 export default function ProductImages({ id, alt }: { id: string; alt: string }) {
   const mainImage = `${BASE_IMAGE_URL}/${id}.jpg`;
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [images, setImages] = useState<string[]>([]);
   const [activeImage, setActiveImage] = useState(mainImage);
+  const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
+
+  const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
+    const { naturalWidth, naturalHeight } = e.currentTarget;
+    setImageDimensions({ width: naturalWidth, height: naturalHeight });
+    onOpen();
+  };
 
   useEffect(() => {
     fetch(`/api/images/${id}`)
@@ -31,6 +40,7 @@ export default function ProductImages({ id, alt }: { id: string; alt: string }) 
             width={500}
             height={500}
             src={activeImage}
+            onClick={handleImageClick}
           />
         </div>
         <div className="flex gap-2">
@@ -50,7 +60,7 @@ export default function ProductImages({ id, alt }: { id: string; alt: string }) 
         onOpenChange={onOpenChange}
         size="5xl"
         backdrop="blur"
-        className="bg-transparent border-none shadow-none"
+        className="bg-transparent border-none shadow-none w-auto"
         classNames={{
           body: 'pb-0',
           closeButton: 'text-white bg-danger hover:bg-danger/30 hover:text-danger',
@@ -61,12 +71,20 @@ export default function ProductImages({ id, alt }: { id: string; alt: string }) 
             <>
               <ModalHeader />
               <ModalBody className="items-center">
-                <div className="rounded-md max-w-[800px] h-[800px] w-full flex justify-center items-center bg-white">
+                <div
+                  className="rounded-md flex justify-center items-center bg-white"
+                  style={{
+                    //width: imageDimensions.width * SCALE_FACTOR,
+                    height: imageDimensions.height * SCALE_FACTOR,
+                    maxWidth: '98vw',
+                    maxHeight: '90vh',
+                  }}
+                >
                   <Image
-                    className="rounded-md h-full object-scale-down"
+                    className="w-full h-full rounded-md"
                     alt={alt}
-                    width={600}
-                    height={600}
+                    width={imageDimensions.width * SCALE_FACTOR}
+                    height={imageDimensions.height * SCALE_FACTOR}
                     src={activeImage}
                   />
                 </div>
