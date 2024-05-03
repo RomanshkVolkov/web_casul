@@ -10,7 +10,7 @@ export default function Product({ params: { id } }: { params: { id: string } }) 
     <div className="flex py-10 xs:px-4 md:py-10 md:px-24 lg:py-12 lg:px-28 bg-background">
       <div className="container xs:max-w-full">
         <Card>
-          <CardHeader className="flex gap-3 p-8 items-stretch flex-row lg:flex-row xs:flex-col xs:items-center">
+          <CardHeader className="flex gap-3 p-8 items-stretch flex-row lg:flex-row xs:flex-col">
             <Suspense fallback={<ProductSkeleton />}>
               <Details productId={id} />
             </Suspense>

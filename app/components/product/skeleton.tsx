@@ -3,11 +3,21 @@ import { Chip, Divider, Skeleton } from '@nextui-org/react';
 const ProductSkeleton = () => {
   return (
     <>
-      <Skeleton className="rounded-md">
-        <div className="max-w-[500px] h-[500px] basis-full flex justify-center items-center">
-          <div className="w-[500px] h-[500px]" />
+      <div className="xs:w-full md:w-auto">
+        <Skeleton className="rounded-md mb-2">
+          <div className="max-w-[500px] h-[500px] basis-full flex justify-center items-center">
+            <div className="w-[500px] h-[500px]" />
+          </div>
+        </Skeleton>
+        <div className="flex gap-2">
+          <Skeleton className="rounded-md">
+            <div className="max-w-[80px] w-[80px] h-[80px]" />
+          </Skeleton>
+          <Skeleton className="rounded-md">
+            <div className="max-w-[80px] w-[80px] h-[80px]" />
+          </Skeleton>
         </div>
-      </Skeleton>
+      </div>
 
       <div className="self-start flex-1">
         <Skeleton className="rounded-full mb-1 inline-block">
