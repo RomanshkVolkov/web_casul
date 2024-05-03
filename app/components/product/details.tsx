@@ -1,9 +1,9 @@
 import { Divider } from '@nextui-org/react';
 import { notFound } from 'next/navigation';
 import Service from '@/api/services/service';
-import Image from 'next/image';
 import ProductTabs from './product-tabs';
 import Keys from './keys';
+import ProductImages from './images';
 
 export default async function Details({ productId }: { productId: string }) {
   const service = new Service();
@@ -15,15 +15,7 @@ export default async function Details({ productId }: { productId: string }) {
 
   return (
     <>
-      <div className="max-w-[500px] h-[500px] basis-full flex justify-center items-center rounded-md bg-white border">
-        <Image
-          className="rounded-md"
-          alt="nextui logo"
-          width={500}
-          height={500}
-          src={`https://imagenesbeta.blob.core.windows.net/imagenes/${productId}.jpg`}
-        />
-      </div>
+      <ProductImages id={productId} alt={product.description} />
       <div className="self-start flex-1 xs:w-full">
         <Keys keys={product.sku.split(',')} />
         <h1 className="text-xl mb-2">{product.description}</h1>
