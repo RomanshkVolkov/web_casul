@@ -60,13 +60,13 @@ export default function ProductImages({ id, alt }: { id: string; alt: string }) 
           {
             <>
               <ModalHeader />
-              <ModalBody>
-                <div className="rounded-md">
+              <ModalBody className="items-center">
+                <div className="rounded-md max-w-[800px] h-[800px] w-full flex justify-center items-center bg-white">
                   <Image
-                    className="rounded-md w-full h-full"
+                    className="rounded-md h-full object-scale-down"
                     alt={alt}
-                    width={500}
-                    height={500}
+                    width={600}
+                    height={600}
                     src={activeImage}
                   />
                 </div>
