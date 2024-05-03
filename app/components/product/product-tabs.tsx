@@ -23,6 +23,7 @@ export default function ProductTabs({
       fullWidth
     >
       <Tab
+        className="overflow-auto"
         key="applications"
         title={
           <div className="flex items-center space-x-2">

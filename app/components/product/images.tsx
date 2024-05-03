@@ -19,7 +19,7 @@ export default function ProductImages({ id, alt }: { id: string; alt: string }) 
 
   return (
     <>
-      <div>
+      <div className="xs:w-full md:w-auto">
         <div
           className="max-w-[500px] h-[500px] basis-full flex justify-center items-center rounded-md bg-white border mb-2"
           role="button"
