@@ -7,10 +7,8 @@ export default async function Home() {
   const service = new Service();
   const { data } = await service.catalog.getNewProducts();
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between md:p-24 sm:p-6 xs:p-4 bg-background">
-      <div className="md:container xs:w-3/4 flex justify center">
-        <ProductsCarousel title="Productos nuevos" products={data} />
-      </div>
+    <div className="flex min-h-screen flex-col items-center justify-between p-4 mt-20 bg-background">
+      <ProductsCarousel title="Productos nuevos" products={data} />
     </div>
   );
 }

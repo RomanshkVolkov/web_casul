@@ -17,7 +17,7 @@ export default function ProductCard({ id, title, brand, shortInfo }: Props) {
         <Image
           as={NextImage}
           alt={`product_image_${title}`}
-          className="md:h-[227.133px] sm:h-[220px] xs:h-[220px] object-fill"
+          className="md:h-[230px] xs:h-[220px] object-fill"
           classNames={{
             wrapper: 'bg-cover bg-no-repeat bg-center bg-white',
           }}

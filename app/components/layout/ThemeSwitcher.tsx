@@ -18,8 +18,7 @@ export function ThemeSwitcher() {
 
   return (
     <Switch
-      classNames={{ startContent: 'text-foreground' }}
-      color="secondary"
+      classNames={{ startContent: 'text-foreground !bg-background', wrapper: 'border-2' }}
       startContent={<ImSun size={16} />}
       endContent={<BsMoonStars size={16} />}
       defaultChecked={theme === 'dark'}
