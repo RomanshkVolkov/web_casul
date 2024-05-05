@@ -10,29 +10,29 @@ interface Props {
   brand: string;
   image: string;
 }
-export default function ProductCard({ id, title, brand, shortInfo }: Props) {
+export default function ProductCard({ id, title, brand, shortInfo, image }: Props) {
   return (
     <Card className="rounded-xl">
-      <CardBody className="overflow-visible py-2">
+      <CardBody className="py-2 bg-white flex justify-center">
         <Image
           as={NextImage}
-          alt={`product_image_${title}`}
-          className="md:h-[230px] xs:h-[220px] object-fill"
-          classNames={{
-            wrapper: 'bg-cover bg-no-repeat bg-center bg-white',
-          }}
+          alt={`product_image_${id}`}
           radius="lg"
-          src={`https://imagenesbeta.blob.core.windows.net/imagenes/${id}.jpg`}
-          width={1420}
-          height={500}
+          classNames={{ wrapper: 'bg-no-repeat bg-center bg-cover' }}
+          src={image}
+          width={300}
+          height={200}
           fallbackSrc="/svg/image-not-found.svg"
           loading="lazy"
+          layout="responsive"
         />
       </CardBody>
       <Link href={url.product(id)}>
         <CardHeader className="p-4 flex-col items-start max-w-64 sm:max-w-none">
           <small className="text-default-500">{shortInfo}</small>
-          <small className="text-default">{brand}</small>
+          <Tooltip content={brand} className="max-w-64" placement="bottom">
+            <small className="text-default truncate">{brand}</small>
+          </Tooltip>
           <Tooltip content={title} className="max-w-64" placement="bottom">
             <h4 className="font-bold text-large overflow-hidden max-h-14">{title}</h4>
           </Tooltip>
