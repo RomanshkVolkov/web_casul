@@ -15,7 +15,7 @@ export const serializedPagination = (total: number, defaultPage: number, default
 };
 
 export const serializedImageUrl = (file: number, _urlBase: string) => {
-  return `/api/images/products/${file}`;
+  return `/api/products/${file}`;
 };
 
 export const serializedFiltersOptions = (

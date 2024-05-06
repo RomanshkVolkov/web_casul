@@ -12,15 +12,27 @@ export async function GET(request: Request, { params }: Params) {
   const image = await fetch(urlImage);
 
   try {
+    if (!image.ok) {
+      throw new Error('404');
+    }
     const buffer = await image.arrayBuffer();
     const resizedImage = await sharp(Buffer.from(buffer)).webp().toBuffer();
 
     return new Response(resizedImage, {
+      status: 200,
       headers: {
         'Content-Type': 'image/webp',
+        'Control-Cache': 'public, max-age=31536000, immutable',
       },
     });
-  } catch (e) {
-    return new Response(null, { status: 404 });
+  } catch (e: any) {
+    if (e.message === '404') {
+      return new Response('Not found', {
+        status: 404,
+      });
+    }
+    return new Response('Internal server error', {
+      status: 500,
+    });
   }
 }
