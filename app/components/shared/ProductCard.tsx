@@ -15,21 +15,21 @@ export default function ProductCard({ id, title, brand, shortInfo, image }: Prop
 
   return (
     <Card className="rounded-xl" isPressable onClick={() => push(url.product(id))}>
-      <CardBody className="py-2 bg-white h-[300px] flex justify-center items-center">
+      <CardBody className="py-2 bg-white flex justify-center items-center">
         <Image
           as={NextImage}
           alt={`product_image_${id}`}
           radius="lg"
+          className="w-full h-full"
           classNames={{
             wrapper:
-              'bg-no-repeat bg-center bg-cover w-full h-full max-w-fit flex justify-center items-center',
+              'bg-no-repeat bg-center bg-cover max-w-[200px] h-[200px] flex justify-center items-center',
           }}
           src={image}
           width={300}
-          height={200}
+          height={300}
           fallbackSrc="/svg/image-not-found.svg"
           loading="lazy"
-          layout="responsive"
           unoptimized
         />
       </CardBody>
