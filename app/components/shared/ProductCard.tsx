@@ -13,12 +13,15 @@ interface Props {
 export default function ProductCard({ id, title, brand, shortInfo, image }: Props) {
   return (
     <Card className="rounded-xl">
-      <CardBody className="py-2 bg-white flex justify-center">
+      <CardBody className="py-2 bg-white h-[300px] flex justify-center items-center">
         <Image
           as={NextImage}
           alt={`product_image_${id}`}
           radius="lg"
-          classNames={{ wrapper: 'bg-no-repeat bg-center bg-cover' }}
+          classNames={{
+            wrapper:
+              'bg-no-repeat bg-center bg-cover w-full h-full max-w-fit flex justify-center items-center',
+          }}
           src={image}
           width={300}
           height={200}
