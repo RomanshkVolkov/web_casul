@@ -4,7 +4,6 @@ export const serializedPagination = (total: number, defaultPage: number, default
   const pages = Math.ceil(total / defaultLimit);
   const from = (defaultPage - 1) * defaultLimit;
   const to = defaultPage === pages ? from + (total % defaultLimit) : from + defaultLimit;
-  console.log('serializedPagination', { total, defaultPage, defaultLimit, pages, from, to });
   return {
     page: defaultPage,
     pages,

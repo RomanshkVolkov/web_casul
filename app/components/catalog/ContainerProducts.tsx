@@ -33,7 +33,9 @@ export default function ContainerProducts() {
 
   const handlePagination = (page: number) => {
     dispatch(setPagination(page));
-    window.scrollTo(0, 0);
+    setInterval(() => {
+      window.scrollTo(0, 0);
+    }, 650);
   };
 
   return (
