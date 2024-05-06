@@ -14,9 +14,8 @@ export const serializedPagination = (total: number, defaultPage: number, default
   };
 };
 
-export const serializedImageUrl = (id: number, urlBase: string) => {
-  console.log('serializedImageUrl -> urlBase', urlBase);
-  return `${urlBase}/storage/blobs/${id}.jpg?container=imagenes`;
+export const serializedImageUrl = (file: number, _urlBase: string) => {
+  return `/api/images/products/${file}`;
 };
 
 export const serializedFiltersOptions = (

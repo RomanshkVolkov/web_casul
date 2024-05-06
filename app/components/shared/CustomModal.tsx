@@ -18,14 +18,15 @@ interface Props {
   size: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   children: React.ReactNode;
   button: React.ReactNode;
+  btnClassName?: string;
 }
-export default function CustomModal({ id, title, size, children, button }: Props) {
+export default function CustomModal({ id, title, size, children, button, btnClassName }: Props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
       <Tooltip content={title} placement="bottom">
-        <Button id={id} onPress={onOpen}>
+        <Button id={id} onPress={onOpen} className={btnClassName}>
           {button}
         </Button>
       </Tooltip>

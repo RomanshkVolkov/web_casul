@@ -56,7 +56,7 @@ export default function InputSearch({ startContent, endContent }: Props) {
     <>
       <Input
         id="search_input"
-        className="w-[620px] center-diagonal text-center focus:outline-none"
+        className="sm:w-[620px] md:w-[580px] center-diagonal text-center focus:outline-none"
         value={search}
         onChange={(e) => handleChange(e)}
         placeholder="¿Qué estás buscando?"

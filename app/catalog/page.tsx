@@ -1,6 +1,6 @@
 import WidgetFilters from '../components/WidgetFilters';
 import PaginationOrdering from '../components/shared/inputs/PaginationOrdering';
-import ContainerProducts from './components/ContainerProducts';
+import ContainerProducts from '../components/catalog/ContainerProducts';
 
 export default function Catalog() {
   return (

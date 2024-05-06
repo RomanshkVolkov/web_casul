@@ -22,7 +22,7 @@ export function ProductsCarousel({ title, products }: Props) {
         <h1 className="sm:text-3xl xs:text-lg font-bold">{title}</h1>
       </div>
 
-      <div className="w-full">
+      <div className="w-full p-6">
         {products.length === 0 ? (
           <div className="flex justify-center flex-col items-center gap-4">
             <GrCatalog size={100} />
@@ -39,7 +39,7 @@ export function ProductsCarousel({ title, products }: Props) {
             className="!p-2"
             modules={[Navigation, Pagination, A11y]}
             slidesPerView={1}
-            spaceBetween={15}
+            spaceBetween={35}
             breakpoints={{
               480: { slidesPerView: 1 },
               740: { slidesPerView: 3 },

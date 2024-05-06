@@ -10,7 +10,6 @@ export default class CatalogAPI extends CatalogAPIAbstract {
   constructor(urlApiBase: string) {
     super();
     this.urlApiBase = urlApiBase;
-    console.log('CatalogAPI -> constructor -> this.urlApiBase', this.urlApiBase);
     this.api = new API(this.urlApiBase);
   }
 
