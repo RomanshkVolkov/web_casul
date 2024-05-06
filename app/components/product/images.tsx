@@ -30,7 +30,7 @@ export default function ProductImages({ id, alt }: { id: string; alt: string }) 
     <>
       <div className="xs:w-full md:w-auto">
         <div
-          className="max-w-[500px] h-[500px] basis-full flex justify-center items-center rounded-md bg-white border mb-2"
+          className="xs:max-w-[250px] xs:h-[250px] md:max-w-[500px] md:h-[500px] basis-full flex justify-center items-center rounded-md bg-white border mb-2"
           role="button"
           onClick={onOpen}
         >
@@ -64,6 +64,7 @@ export default function ProductImages({ id, alt }: { id: string; alt: string }) 
         classNames={{
           body: 'pb-0',
           closeButton: 'text-white bg-danger hover:bg-danger/30 hover:text-danger',
+          wrapper: 'items-center',
         }}
       >
         <ModalContent>
@@ -72,16 +73,14 @@ export default function ProductImages({ id, alt }: { id: string; alt: string }) 
               <ModalHeader />
               <ModalBody className="items-center">
                 <div
-                  className="rounded-md flex justify-center items-center bg-white"
+                  className="rounded-md flex justify-center items-center bg-white md:max-w-[98vw] md:max-h-[90vh] xs:max-w-[300px] xs:max-h-[300px]"
                   style={{
                     //width: imageDimensions.width * SCALE_FACTOR,
                     height: imageDimensions.height * SCALE_FACTOR,
-                    maxWidth: '98vw',
-                    maxHeight: '90vh',
                   }}
                 >
                   <Image
-                    className="w-full h-full rounded-md"
+                    className="w-full h-full rounded-md  xs:object-scale-down md:object-contain"
                     alt={alt}
                     width={imageDimensions.width * SCALE_FACTOR}
                     height={imageDimensions.height * SCALE_FACTOR}

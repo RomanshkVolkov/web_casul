@@ -10,7 +10,7 @@ export default function ImageThumbnail({
 }) {
   return (
     <div
-      className={`max-w-[80px] w-[80px] h-[80px] bg-white rounded-md flex justify-center items-center border relative hover:opacity-30 ${
+      className={`xs:max-w-[50px] xs:w-[50px] xs:h-[50px] md:max-w-[80px] md:w-[80px] md:h-[80px] bg-white rounded-md flex justify-center items-center border relative hover:opacity-30 ${
         isActive ? 'border-2 border-black dark:border-orange-400' : ''
       }`}
       role="button"
