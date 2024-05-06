@@ -25,6 +25,7 @@ export default function ProductCard({ id, title, brand, shortInfo, image }: Prop
           fallbackSrc="/svg/image-not-found.svg"
           loading="lazy"
           layout="responsive"
+          unoptimized
         />
       </CardBody>
       <Link href={url.product(id)}>
