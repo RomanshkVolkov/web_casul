@@ -1,6 +1,6 @@
 import { Divider } from '@nextui-org/react';
 import { notFound } from 'next/navigation';
-import Service from '@/api/services/service';
+import Service from '@/api-services/services/service';
 import ProductTabs from './product-tabs';
 import Keys from './keys';
 import ProductImages from './images';

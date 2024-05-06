@@ -1,4 +1,4 @@
-import Service from '@/api/services/service';
+import Service from '@/api-services/services/service';
 import CatalogTypes from '@/types/catalog-types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 

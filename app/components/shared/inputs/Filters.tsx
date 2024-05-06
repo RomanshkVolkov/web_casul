@@ -1,4 +1,4 @@
-import Service from '@/api/services/service';
+import Service from '@/api-services/services/service';
 import FilterActions from './FilterActions';
 import FilterSelect from './FilterSelect';
 

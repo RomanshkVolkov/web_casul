@@ -1,6 +1,6 @@
 // import WidgetFilters from "./components/WidgetFilters";
 
-import Service from '@/api/services/service';
+import Service from '@/api-services/services/service';
 import { ProductsCarousel } from './components/ProductsCarousel';
 
 export default async function Home() {
