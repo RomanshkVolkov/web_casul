@@ -49,7 +49,7 @@ export function ProductsCarousel({ title, products }: Props) {
             {products.map((product) => (
               <SwiperSlide
                 key={product.id}
-                className="bg-red-200 !flex justify-center items-center rounded-xl"
+                className="bg-red-200 !flex justify-center items-center rounded-xl !h-auto"
               >
                 <ProductCard
                   id={product.id}

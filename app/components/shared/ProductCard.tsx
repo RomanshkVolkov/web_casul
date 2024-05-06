@@ -12,7 +12,7 @@ interface Props {
 }
 export default function ProductCard({ id, title, brand, shortInfo, image }: Props) {
   return (
-    <Card className="rounded-xl">
+    <Card className="rounded-xl h-full">
       <CardBody className="py-2 bg-white flex justify-center">
         <Image
           as={NextImage}
