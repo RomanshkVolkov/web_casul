@@ -3,7 +3,7 @@ export default function Footer() {
   const date = new Date();
   const year = date.getFullYear();
   return (
-    <footer className="bg-content1 p-4">
+    <footer className="bg-content1 p-4 xs:mb-10 sm:mb-0">
       <div className="w-full flex justify-center">
         <div className="w-full p-4 grid md:grid-cols-3 sm_grid-cols-1">
           <div className="p-4">
