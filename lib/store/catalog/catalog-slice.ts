@@ -4,7 +4,7 @@ import { fetchSearchProducts, fetchSearchProductsByFilters } from './catalog-act
 import { serializedPagination } from '@/app/utils/serializers/catalog-serializer';
 import CatalogTypes from '@/types/catalog-types';
 
-export const catalogSlice = createSlice({
+const catalogSlice = createSlice({
   name: 'catalog',
   initialState,
   reducers: {

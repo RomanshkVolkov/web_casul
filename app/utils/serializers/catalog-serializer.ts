@@ -3,7 +3,8 @@ import CatalogTypes from '@/types/catalog-types';
 export const serializedPagination = (total: number, defaultPage: number, defaultLimit: number) => {
   const pages = Math.ceil(total / defaultLimit);
   const from = (defaultPage - 1) * defaultLimit;
-  const to = defaultPage * defaultLimit;
+  const to = defaultPage === pages ? from + (total % defaultLimit) : from + defaultLimit;
+  console.log('serializedPagination', { total, defaultPage, defaultLimit, pages, from, to });
   return {
     page: defaultPage,
     pages,
