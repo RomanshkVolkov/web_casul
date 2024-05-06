@@ -1,39 +1,26 @@
 'use client';
 
-import { useQueryString } from '@/lib/hooks/useQueryString';
-import { setPendingFetch } from '@/lib/store/catalog/catalog-slice';
-import { useAppDispatch } from '@/lib/store/hooks';
+import useSearchForm from '@/lib/hooks/useSearchForm';
 import { Button, Input } from '@nextui-org/react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { IoMdReturnLeft } from 'react-icons/io';
 import { TbSearch } from 'react-icons/tb';
-import { toast } from 'sonner';
 
-export default function SearchContainer() {
-  const pathname = usePathname();
-  const { push } = useRouter();
-  const searchParams = useSearchParams();
-  const { replaceAllParams } = useQueryString(searchParams);
-  const dispatch = useAppDispatch();
+interface Props {
+  type?: 'button' | 'input';
+  widgetFiltersButton?: React.ReactNode;
+}
 
+export default function SearchContainer({ type, widgetFiltersButton }: Props) {
+  const { handler } = useSearchForm();
   const [search, setSearch] = useState<string>('');
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  const isButton = !type || type === 'button';
+  const classNameContainer = isButton ? 'bg-content1' : 'bg-transparent w-full';
+
   const handleSearch = () => {
-    if (search.length < 3) {
-      toast.error('La búsqueda debe tener al menos 3 caracteres');
-    }
-
-    dispatch(setPendingFetch(true));
-    const query = replaceAllParams('search', search);
-    const newUrl = `${pathname}?${query}`;
-
-    if (pathname === '/catalog') {
-      push(newUrl);
-    } else {
-      push(newUrl);
-    }
+    handler(search);
     setIsOpen(false);
   };
 
@@ -45,10 +32,19 @@ export default function SearchContainer() {
 
   return (
     <>
-      <div>
-        <Button onClick={() => setIsOpen(true)}>
-          <TbSearch size={20} />
-        </Button>
+      <div className={classNameContainer}>
+        {isButton ? (
+          <Button onClick={() => setIsOpen(true)}>
+            <TbSearch size={20} />
+          </Button>
+        ) : (
+          <Input
+            placeholder="Buscar"
+            onFocus={() => setIsOpen(true)}
+            startContent={widgetFiltersButton}
+            endContent={<TbSearch size={24} className="cursor-pointer" />}
+          />
+        )}
       </div>
       {isOpen && (
         <div className="fixed w-screen h-screen top-0 left-0 bg-background z-50">
@@ -58,6 +54,7 @@ export default function SearchContainer() {
             </div>
             <div className="p-2 bg-content1">
               <Input
+                autoFocus
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 onKeyDown={handleOnKeyDown}

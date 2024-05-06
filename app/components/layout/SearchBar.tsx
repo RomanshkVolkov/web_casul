@@ -1,6 +1,6 @@
 import { ThemeSwitcher } from './ThemeSwitcher';
 import WidgetFilters from '../WidgetFilters';
-import InputSearch from '../shared/inputs/InputSearch';
+import InputSearch from '../shared/inputs/InputSearchBar';
 import ButtonCatalog from '../shared/inputs/ButtonCatalog';
 
 export default function SearchBar() {
