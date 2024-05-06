@@ -36,6 +36,7 @@ export function ProductsCarousel({ title, products }: Props) {
           </div>
         ) : (
           <Swiper
+            className="!p-2"
             modules={[Navigation, Pagination, A11y]}
             slidesPerView={1}
             spaceBetween={15}
