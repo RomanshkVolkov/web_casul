@@ -1,4 +1,5 @@
 import sharp from 'sharp';
+
 interface Params {
   params: {
     file: string;
@@ -26,6 +27,7 @@ export async function GET(request: Request, { params }: Params) {
       },
     });
   } catch (e: any) {
+    console.log(e);
     if (e.message === '404') {
       return new Response('Not found', {
         status: 404,
