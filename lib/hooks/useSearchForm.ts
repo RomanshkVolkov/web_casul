@@ -15,6 +15,7 @@ export default function useSearchForm() {
   const handler = (search: string) => {
     if (search.length < 3) {
       toast.error('La búsqueda debe tener al menos 3 caracteres');
+      return;
     }
 
     dispatch(setPendingFetch(true));

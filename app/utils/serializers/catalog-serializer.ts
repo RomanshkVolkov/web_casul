@@ -31,8 +31,8 @@ export const serializedFiltersOptions = (
       options
         .filter(
           (option: any) =>
-            (option.brandId === currentFilterValues.brand || currentFilterValues.brand === 0) &&
-            (option.modelId === currentFilterValues.model || currentFilterValues.model === 0)
+            (option.brandId === currentFilterValues.brand || !currentFilterValues.brand) &&
+            (option.modelId === currentFilterValues.model || !currentFilterValues.model)
         )
         .reduce((acc: any, current: any) => {
           if (!acc.find((item: any) => item.value === current.value)) {
@@ -43,9 +43,9 @@ export const serializedFiltersOptions = (
     year: (options: any) => {
       const data = options.filter(
         (option: any) =>
-          (option.brandId === currentFilterValues.brand || currentFilterValues.brand === 0) &&
-          (option.modelId === currentFilterValues.model || currentFilterValues.model === 0) &&
-          (option.familyId === currentFilterValues.family || currentFilterValues.family === 0)
+          (option.brandId === currentFilterValues.brand || !currentFilterValues.brand) &&
+          (option.modelId === currentFilterValues.model || !currentFilterValues.model) &&
+          (option.familyId === currentFilterValues.family || !currentFilterValues.family)
       );
       const min = Math.min(...data.map((item: any) => item.min));
       const max = Math.max(...data.map((item: any) => item.max));

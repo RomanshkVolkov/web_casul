@@ -39,6 +39,7 @@ export default function SearchContainer({ type, widgetFiltersButton }: Props) {
           </Button>
         ) : (
           <Input
+            className="border-[0.5px] rounded-xl"
             placeholder="Buscar"
             onFocus={() => setIsOpen(true)}
             startContent={widgetFiltersButton}
