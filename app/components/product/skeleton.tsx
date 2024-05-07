@@ -5,8 +5,8 @@ const ProductSkeleton = () => {
     <>
       <div className="xs:w-full md:w-auto">
         <Skeleton className="rounded-md mb-2">
-          <div className="max-w-[500px] h-[500px] basis-full flex justify-center items-center">
-            <div className="w-[500px] h-[500px]" />
+          <div className="xs:max-w-[250px] xs:h-[250px] md:max-w-[500px] md:h-[500px basis-full flex justify-center items-center">
+            <div className="h-full rounded-md" />
           </div>
         </Skeleton>
         <div className="flex gap-2">
