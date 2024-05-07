@@ -24,8 +24,8 @@ export default function RootLayout({
         <Providers>
           <Header />
           {children}
-          <MobileNav />
           <Footer />
+          <MobileNav />
         </Providers>
       </body>
     </html>

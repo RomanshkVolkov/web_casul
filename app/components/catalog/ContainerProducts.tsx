@@ -33,6 +33,9 @@ export default function ContainerProducts() {
 
   const handlePagination = (page: number) => {
     dispatch(setPagination(page));
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 650);
   };
 
   return (
@@ -55,7 +58,13 @@ export default function ContainerProducts() {
                 />
               ))}
       </div>
-      <div className="flex justify-end mt-4">
+      <div className="flex justify-end gap-4 mt-4">
+        <div className="flex flex-col justify-end">
+          <span>
+            {pagination.page === 1 ? pagination.from || 1 : pagination.from + 1} - {pagination.to}{' '}
+            de {pagination.total}
+          </span>
+        </div>
         <Pagination
           classNames={{ cursor: 'bg-primary text-black' }}
           onChange={(page) => handlePagination(page)}

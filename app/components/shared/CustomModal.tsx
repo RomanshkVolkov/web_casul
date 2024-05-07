@@ -10,18 +10,33 @@ import {
   useDisclosure,
   Tooltip,
 } from '@nextui-org/react';
-import React from 'react';
+import { usePathname } from 'next/navigation';
+import React, { useEffect } from 'react';
 
 interface Props {
   id?: string;
   title: string;
   size: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  modalPlacement?: 'auto' | 'top' | 'bottom' | 'center' | 'top-center' | 'bottom-center';
   children: React.ReactNode;
   button: React.ReactNode;
   btnClassName?: string;
 }
-export default function CustomModal({ id, title, size, children, button, btnClassName }: Props) {
+export default function CustomModal({
+  id,
+  title,
+  size,
+  children,
+  button,
+  btnClassName,
+  modalPlacement,
+}: Props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    onClose();
+  }, [onClose, pathname]);
 
   return (
     <>
@@ -30,7 +45,13 @@ export default function CustomModal({ id, title, size, children, button, btnClas
           {button}
         </Button>
       </Tooltip>
-      <Modal size={size} isOpen={isOpen} onClose={onClose}>
+      <Modal
+        size={size}
+        isOpen={isOpen}
+        onClose={onClose}
+        placement={modalPlacement ? modalPlacement : 'center'}
+        className={modalPlacement ? 'mb-0 xs:mb-10' : ''}
+      >
         <ModalContent>
           {(onClose) => (
             <>

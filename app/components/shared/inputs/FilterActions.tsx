@@ -39,11 +39,11 @@ export default function FilterActions() {
 
   return (
     <div className="flex flex-col gap-4 mt-2">
-      <ButtonAsync asyncAction={handleClear}>
-        <span>Limpiar</span>
-      </ButtonAsync>
       <ButtonAsync asyncAction={handleSearch}>
         <span>Buscar</span>
+      </ButtonAsync>
+      <ButtonAsync asyncAction={handleClear}>
+        <span>Limpiar</span>
       </ButtonAsync>
     </div>
   );

@@ -27,7 +27,6 @@ export async function GET(request: Request, { params }: Params) {
       },
     });
   } catch (e: any) {
-    console.log(e);
     if (e.message === '404') {
       return new Response(null, {
         status: 404,
