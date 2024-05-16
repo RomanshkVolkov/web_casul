@@ -5,6 +5,7 @@ import Providers from './Providers';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import MobileNav from './components/layout/MobileNav';
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           <Footer />
           <MobileNav />
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
