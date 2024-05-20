@@ -20,6 +20,7 @@ export function ThemeSwitcher() {
     <Switch
       className="pt-1"
       color="default"
+      isSelected={theme === 'light'}
       startContent={<ImSun size={16} />}
       endContent={<BsMoonStars size={16} />}
       defaultChecked={theme === 'dark'}
