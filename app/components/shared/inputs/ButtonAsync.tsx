@@ -1,14 +1,20 @@
-'use client';
+"use client";
 
-import { Button } from '@nextui-org/react';
-import { useState } from 'react';
+import { Button } from "@nextui-org/react";
+import { useState } from "react";
 
 interface Props {
   asyncAction: () => Promise<void>;
   className?: string;
+  size?: "sm" | "md" | "lg";
   children: React.ReactNode;
 }
-export default function ButtonAsync({ asyncAction, className, children }: Props) {
+export default function ButtonAsync({
+  asyncAction,
+  className,
+  children,
+  size,
+}: Props) {
   const [loading, setLoading] = useState(false);
 
   const handleAsyncAction = async () => {
@@ -28,6 +34,7 @@ export default function ButtonAsync({ asyncAction, className, children }: Props)
       disabled={loading}
       isLoading={loading}
       radius="md"
+      size={size}
     >
       {children}
     </Button>

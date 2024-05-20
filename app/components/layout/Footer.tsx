@@ -1,13 +1,13 @@
-import Image from 'next/image';
+import Image from "next/image";
 export default function Footer() {
   const date = new Date();
   const year = date.getFullYear();
   return (
     <footer className="bg-content1 p-4 xs:mb-10 sm:mb-0">
-      <div className="w-full flex justify-center">
-        <div className="w-full p-4 grid md:grid-cols-3 sm_grid-cols-1">
+      <div className="flex w-full justify-center">
+        <div className="sm_grid-cols-1 grid w-full p-4 md:grid-cols-3">
           <div className="p-4">
-            <div className="w-full flex justify-center p-2">
+            <div className="flex w-full justify-center p-2">
               <Image
                 className="rounded-xl"
                 src="/images/logo.webp"
@@ -19,7 +19,7 @@ export default function Footer() {
           </div>
           <div className="flex flex-col justify-between">
             <div>
-              <h2 className="font-semibold text-medium">Información</h2>
+              <h2 className="text-medium font-semibold">Información</h2>
             </div>
             <div>
               <p>Contáctanos</p>
@@ -36,7 +36,9 @@ export default function Footer() {
           </div>
           <div className="flex flex-col justify-between">
             <div>
-              <h2 className="font-semibold text-medium">Descarga nuestra app</h2>
+              <h2 className="text-medium font-semibold">
+                Descarga nuestra app
+              </h2>
             </div>
             <div>
               <a
@@ -59,6 +61,19 @@ export default function Footer() {
               >
                 <Image
                   src="/svg/app-store-badge.svg"
+                  width={150}
+                  height={150}
+                  alt="Enlace a App Store"
+                />
+              </a>
+              <a
+                target="_blank"
+                href="https://appgallery.huawei.com/app/C110626599"
+                rel="noreferrer"
+                className="mt-1 inline-block"
+              >
+                <Image
+                  src="/images/huawei-badge.png"
                   width={150}
                   height={150}
                   alt="Enlace a App Store"

@@ -1,19 +1,20 @@
-'use client';
+"use client";
 
-import { serializedFiltersOptions } from '@/app/utils/serializers/catalog-serializer';
-import { setFilters } from '@/lib/store/catalog/catalog-slice';
-import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
-import CatalogTypes from '@/types/catalog-types';
-import { Select, SelectItem } from '@nextui-org/react';
-import { useEffect, useState } from 'react';
+import { serializedFiltersOptions } from "@/app/utils/serializers/catalog-serializer";
+import { setFilters } from "@/lib/store/catalog/catalog-slice";
+import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
+import CatalogTypes from "@/types/catalog-types";
+import { Select, SelectItem } from "@nextui-org/react";
+import { useEffect, useState } from "react";
 
 interface Props {
   id: string;
-  name: CatalogTypes['CatalogFiltersKeys'];
+  name: CatalogTypes["CatalogFiltersKeys"];
   placeholder: string;
-  options: CatalogTypes['SelectItem'][];
+  options: CatalogTypes["SelectItem"][];
   className?: string;
   ariaLabel?: string;
+  size?: "sm" | "md" | "lg";
 }
 
 export default function FilterSelect({
@@ -23,11 +24,12 @@ export default function FilterSelect({
   options,
   className,
   ariaLabel,
+  size,
 }: Props) {
   const { filters } = useAppSelector((state) => state.catalog);
   const [value, setValue] = useState<Set<number | string>>(() => {
     const currentStoreValue = filters[name];
-    if (typeof currentStoreValue === 'number' && currentStoreValue > 0) {
+    if (typeof currentStoreValue === "number" && currentStoreValue > 0) {
       return new Set([currentStoreValue]);
     }
     return new Set([]);
@@ -42,7 +44,7 @@ export default function FilterSelect({
 
   useEffect(() => {
     const currentStoreValue = filters[name];
-    if (typeof currentStoreValue === 'number' && currentStoreValue === 0) {
+    if (typeof currentStoreValue === "number" && currentStoreValue === 0) {
       setValue(new Set([]));
     }
   }, [filters, name]);
@@ -50,6 +52,7 @@ export default function FilterSelect({
   return (
     <Select
       id={id}
+      size={size}
       placeholder={placeholder}
       className={className}
       aria-label={ariaLabel}
