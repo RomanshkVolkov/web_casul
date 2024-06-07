@@ -1,21 +1,21 @@
 import CatalogTypes from '@/types/catalog-types';
 
-export const serializedPagination = (total: number, defaultPage: number, defaultLimit: number) => {
-  const pages = Math.ceil(total / defaultLimit);
-  const from = (defaultPage - 1) * defaultLimit;
-  const to = defaultPage === pages ? from + (total % defaultLimit) : from + defaultLimit;
+export const serializedPagination = (total: number, page: number, limit: number) => {
+  const pages = Math.ceil(total / limit);
+  const from = (page - 1) * limit;
+  const to = page === pages ?  total : page * limit;
   return {
-    page: defaultPage,
+    page,
     pages,
     total,
-    limit: defaultLimit,
-    from: from,
+    limit,
+    from,
     to,
   };
 };
 
-export const serializedImageUrl = (file: number, _urlBase: string) => {
-  return `/api/products/${file}`;
+export const serializedImageUrl = (file: number, urlBase: string) => {
+  return `${urlBase}/imagenes/${file}.jpg`;
 };
 
 export const serializedFiltersOptions = (

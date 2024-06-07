@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Service from '@/api-services/services/service';
 import ProductTabs from './product-tabs';
 import Keys from './keys';
-import ProductImages from './images';
+import ProductImages from './images'
 
 export default async function Details({ productId }: { productId: string }) {
   const service = new Service();

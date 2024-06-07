@@ -16,9 +16,31 @@ export default class API {
   }
 
   private readonly serializedLogRequest = (url: string, method: FetchMethods, body: any) => {
-    console.log(`Request: ${method}: ${url}`);
-    if (body) console.log('Payload:', body);
+    console.debug(`Request: ${method}: ${url}`);
+    if (body) console.info('Payload:', body);
   };
+
+  private readonly serializedLogResponse = (response: FetchResponse<any>) => {
+    const {content} = response;
+    console.debug(`Response: ${response.status} ${response.url}`);
+    if (typeof content === 'object') {
+      Object.keys(content).forEach((key) => {
+        if (Array.isArray(content[key])) {
+          console.debug(`${key}:`);
+          console.table(content[key].slice(0, 5));
+        } else if (typeof content[key] === 'object') {
+          console.debug(`${key}:`);
+          console.table(content[key]);
+        } else {
+          console.debug(`${key}: ${content[key]}`);
+        }
+      })
+    } else if (Array.isArray(content)) {
+      console.table(content.slice(0, 5));
+    } else {
+      console.debug(content);
+    }
+  }
 
   async fetch<T, RES = FetchResponse<T>, Payload = unknown>(
     url: string,
@@ -38,7 +60,6 @@ export default class API {
         method: method || 'GET',
         headers: {
           'Content-Type': 'application/json',
-          // 'Authorization': `Bearer ${token}`
         },
         body: bodyParser,
       };
@@ -56,7 +77,6 @@ export default class API {
         'text/plain': (res: Response) => res.text(),
         'form-data': (res: Response) => res.formData(),
         'image/webp': (res: Response) => res.blob(),
-        // Puedes agregar más handlers según sea necesario.
       };
 
       let content: T | string | null = null;
@@ -65,6 +85,7 @@ export default class API {
         const handler = Object.keys(contentHandlers).find((key) =>
           contentType?.includes(key)
         ) as keyof typeof contentHandlers;
+        
         // Procesa la respuesta con el handler correspondiente
         if (!handler) console.warn(`No handler found for content type: ${contentType}`);
         content =
@@ -77,7 +98,18 @@ export default class API {
           `HTTP Error: ${response.status} ${response.statusText}, Details: ${response.url}, Payload: ${body}`
         );
       }
-      if (isDev) console.log('content', content);
+
+      if (isDev) {
+        const print = 'Empty content';
+        if (isDev){
+          if (content) {
+            this.serializedLogResponse({ ok: response.ok, status: response.status, contentType: contentType || '', content, url: response.url });
+          } else {
+            console.debug(print);
+          }
+        }
+      } 
+
       return {
         ok: response.ok,
         status: response.status,

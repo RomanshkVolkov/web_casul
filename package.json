@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "start": "op run --env-file='./.env.prod' -- next start",
+    "dev": "op run --env-file='./.env.dev' -- next dev",
+    "start:dev": "op run --env-file='./.env.prod' -- next dev",
     "build": "next build",
-    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {

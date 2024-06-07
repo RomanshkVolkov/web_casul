@@ -5,12 +5,14 @@ import { serializedImageUrl } from '@/app/utils/serializers/catalog-serializer';
 
 export default class CatalogAPI extends CatalogAPIAbstract {
   private readonly urlApiBase: string;
+  private readonly urlBlob: string;
   private readonly api: API;
 
-  constructor(urlApiBase: string) {
+  constructor(urlApiBase: string, urlBlob: string) {
     super();
     this.urlApiBase = urlApiBase;
     this.api = new API(this.urlApiBase);
+    this.urlBlob = urlBlob;
   }
 
   async getProductsBySearch(req: CatalogAPIResponse['GetProductsBySearch']['Request']) {
@@ -24,7 +26,7 @@ export default class CatalogAPI extends CatalogAPIAbstract {
         sku: product.clave,
         description: product.descripcion,
         brand: product.marca,
-        image: serializedImageUrl(product.id_producto, this.urlApiBase),
+        image: serializedImageUrl(product.id_producto, this.urlBlob),
       })) || [];
     return { data };
   }
@@ -38,7 +40,7 @@ export default class CatalogAPI extends CatalogAPIAbstract {
     const data =
       content?.map((product: any) => ({
         ...product,
-        image: serializedImageUrl(product.id, this.urlApiBase),
+        image: serializedImageUrl(product.id, this.urlBlob),
       })) || [];
     return { data, error };
   }
@@ -62,7 +64,7 @@ export default class CatalogAPI extends CatalogAPIAbstract {
       };
 
     const { product, equivalences: rawEquivalences, ...rest } = content;
-    product.image = serializedImageUrl(product.id, this.urlApiBase);
+    product.image = serializedImageUrl(product.id, this.urlBlob);
     const equivalences = rawEquivalences.filter((equivalence: any) => equivalence.id !== 0);
     return { product, equivalences, ...rest };
   }
@@ -85,7 +87,7 @@ export default class CatalogAPI extends CatalogAPIAbstract {
     const data =
       content?.map((product: any) => ({
         ...product,
-        image: serializedImageUrl(product.id, this.urlApiBase),
+        image: serializedImageUrl(product.id, this.urlBlob),
       })) || [];
     return { data };
   }

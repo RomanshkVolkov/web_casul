@@ -6,6 +6,23 @@ import SearchContainer from "./components/catalog/SearchContainer";
 import WidgetFilters from "./components/WidgetFilters";
 import Filters from "./components/shared/inputs/Filters";
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  openGraph: {
+    type: 'website',
+    locale: 'es_MX',
+    url: 'https://casul.mx/',
+    images: [
+      {
+        url: 'https://casul.mx/_next/image?url=%2Fimages%2Flogo.webp&w=256&q=75',
+        width: 800,
+        height: 600,
+        alt: 'Casul | Web',
+      },
+    ],
+  },
+}
 
 export default async function Home() {
   const service = new Service();
